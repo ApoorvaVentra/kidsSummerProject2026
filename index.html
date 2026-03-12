@@ -276,6 +276,31 @@
 
   .task-icon { font-size: 13px; flex-shrink: 0; }
 
+  /* Mark day done button */
+  .mark-day-btn {
+    margin-top: 5px;
+    width: 100%;
+    background: none;
+    border: 1.5px dashed #ccc;
+    border-radius: 8px;
+    padding: 3px 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: #bbb;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  .mark-day-btn:hover { border-color: var(--mint); color: var(--mint); background: #f0fff4; }
+
+  .day-card.completed-day .mark-day-btn {
+    border: 1.5px solid var(--mint);
+    color: var(--mint);
+    background: #e8f5e9;
+  }
+
   /* Checkmark overlay on complete day */
   .day-card.completed-day::after {
     content: '✅';
@@ -379,6 +404,265 @@
 
   .reset-btn:hover { border-color: var(--coral); color: var(--coral); }
 
+  /* Password modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-overlay.show { display: flex; }
+
+  .modal-box {
+    background: white;
+    border-radius: 24px;
+    padding: 32px 28px 24px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    width: 300px;
+    animation: popIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+
+  .modal-box .modal-icon { font-size: 40px; margin-bottom: 8px; }
+  .modal-box h3 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--coral);
+    margin-bottom: 6px;
+  }
+  .modal-box p { font-size: 13px; color: #888; margin-bottom: 16px; font-weight: 600; }
+
+  .modal-input {
+    width: 100%;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 4px;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 6px;
+  }
+  .modal-input:focus { border-color: var(--coral); }
+  .modal-input.shake {
+    animation: shake 0.35s ease;
+    border-color: var(--coral);
+  }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    25%      { transform: translateX(-8px); }
+    75%      { transform: translateX(8px); }
+  }
+
+  .modal-error { font-size: 12px; color: var(--coral); font-weight: 700; min-height: 16px; margin-bottom: 12px; }
+
+  .modal-btns { display: flex; gap: 10px; }
+  .modal-cancel {
+    flex: 1; padding: 10px; border-radius: 12px;
+    border: 2px solid #eee; background: none;
+    font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 700;
+    color: #aaa; cursor: pointer;
+  }
+  .modal-cancel:hover { border-color: #ccc; color: #888; }
+  .modal-confirm {
+    flex: 1; padding: 10px; border-radius: 12px;
+    border: none; background: var(--coral);
+    font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 800;
+    color: white; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255,107,107,0.35);
+  }
+  .modal-confirm:hover { filter: brightness(1.08); }
+
+  /* 5-DAY REWARD BLOCK */
+  .reward-block {
+    background: white;
+    border-radius: 20px;
+    margin: 6px 0 22px;
+    border: 3px solid #FFD93D;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(255,217,61,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .reward-block.paid {
+    border-color: var(--mint);
+    box-shadow: 0 4px 20px rgba(107,203,119,0.2);
+    opacity: 0.85;
+  }
+
+  .reward-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 14px 18px 10px;
+    background: linear-gradient(135deg, #FFF9E6, #FFFDE7);
+    border-bottom: 2px dashed #FFD93D;
+  }
+
+  .reward-block.paid .reward-header {
+    background: linear-gradient(135deg, #F1FFF4, #E8F5E9);
+    border-bottom-color: var(--mint);
+  }
+
+  .reward-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 16px;
+    font-weight: 800;
+    color: #E65100;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .reward-block.paid .reward-title { color: #2e7d32; }
+
+  .reward-dates {
+    font-size: 12px;
+    font-weight: 700;
+    color: #aaa;
+  }
+
+  .reward-body {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 14px 18px;
+  }
+
+  .reward-pts-box {
+    text-align: center;
+    min-width: 80px;
+  }
+
+  .reward-pts-earned {
+    font-family: 'Baloo 2', cursive;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--coral);
+    line-height: 1;
+  }
+
+  .reward-block.paid .reward-pts-earned { color: var(--mint); }
+
+  .reward-pts-max {
+    font-size: 11px;
+    font-weight: 700;
+    color: #bbb;
+  }
+
+  .reward-tiers {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+
+  .reward-tier {
+    flex: 1;
+    min-width: 80px;
+    border-radius: 12px;
+    padding: 8px 10px;
+    text-align: center;
+    background: #f5f5f5;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .reward-tier.active {
+    background: linear-gradient(135deg, #FFF9C4, #FFE082);
+    border-color: #FFD93D;
+    transform: scale(1.05);
+  }
+
+  .reward-tier.active .tier-rupee { color: #E65100; }
+
+  .reward-block.paid .reward-tier.active {
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+    border-color: var(--mint);
+  }
+
+  .tier-range {
+    font-size: 10px;
+    font-weight: 700;
+    color: #999;
+  }
+
+  .tier-rupee {
+    font-family: 'Baloo 2', cursive;
+    font-size: 20px;
+    font-weight: 800;
+    color: #ccc;
+    line-height: 1.2;
+  }
+
+  .tier-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #bbb;
+    text-transform: uppercase;
+  }
+
+  .reward-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 100px;
+  }
+
+  .pay-btn {
+    background: linear-gradient(135deg, #FFD93D, #FFB300);
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-family: 'Baloo 2', cursive;
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255,179,0,0.4);
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .pay-btn:hover { transform: scale(1.05); box-shadow: 0 6px 16px rgba(255,179,0,0.5); }
+
+  .reward-block.paid .pay-btn {
+    background: linear-gradient(135deg, #6BCB77, #43A047);
+    box-shadow: 0 4px 12px rgba(67,160,71,0.3);
+  }
+
+  .pay-status {
+    font-size: 11px;
+    font-weight: 700;
+    color: #bbb;
+  }
+
+  .reward-block.paid .pay-status { color: var(--mint); }
+
+  .reward-incomplete {
+    font-size: 11px;
+    font-weight: 700;
+    color: #bbb;
+    font-style: italic;
+    padding: 2px 0;
+  }
+
   @media (max-width: 600px) {
     .week-grid { gap: 4px; }
     .day-card { min-height: 80px; padding: 7px 4px; }
@@ -433,7 +717,24 @@
 <div class="calendar-container" id="calendarContainer"></div>
 
 <div style="text-align:center; padding-bottom: 30px;">
-  <button class="reset-btn" onclick="if(confirm('Reset all progress? 😢')) { localStorage.clear(); location.reload(); }">🔄 Reset All Progress</button>
+  <button class="reset-btn" onclick="openResetModal()">🔄 Reset All Progress</button>
+</div>
+
+<!-- Password Modal -->
+<div class="modal-overlay" id="resetModal">
+  <div class="modal-box">
+    <div class="modal-icon">🔐</div>
+    <h3>Parent Password</h3>
+    <p>Enter the password to reset all progress</p>
+    <input class="modal-input" id="resetPassword" type="password"
+      placeholder="••••" maxlength="20"
+      onkeydown="if(event.key==='Enter') confirmReset()"/>
+    <div class="modal-error" id="resetError"></div>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeResetModal()">Cancel</button>
+      <button class="modal-confirm" onclick="confirmReset()">Reset</button>
+    </div>
+  </div>
 </div>
 
 <div class="points-popup" id="popup">
@@ -512,6 +813,11 @@ function toggleTask(ds, task) {
 
   updateScores();
   rerenderDay(ds);
+
+  // Also update the reward block for this day's chunk
+  const chunks = get5DayChunks();
+  const ci = chunks.findIndex(chunk => chunk.some(d => dateStr(d) === ds));
+  if (ci !== -1) rerenderRewardBlock(ci);
 }
 
 function getTotalPoints() {
@@ -572,26 +878,47 @@ function rerenderDay(ds) {
   renderDayCard(el, new Date(ds.replace(/-/g, '/')));
 }
 
+function isDayMarkedDone(ds) {
+  return localStorage.getItem(`day_done_${ds}`) === '1';
+}
+
+function toggleDayDone(ds) {
+  const newVal = !isDayMarkedDone(ds);
+  localStorage.setItem(`day_done_${ds}`, newVal ? '1' : '0');
+  rerenderDay(ds);
+  // Update reward block for this chunk too
+  const chunks = get5DayChunks();
+  const ci = chunks.findIndex(chunk => chunk.some(d => dateStr(d) === ds));
+  if (ci !== -1) rerenderRewardBlock(ci);
+}
+
 function renderDayCard(el, d) {
   const ds = dateStr(d);
   const tasks = getTasksForDay(d);
-  const allDone = tasks.length > 0 && tasks.every(t => state[ds][t]);
-  
-  el.className = `day-card${allDone ? ' completed-day' : ''}`;
-  
+  const allTasksDone = tasks.length > 0 && tasks.every(t => state[ds][t]);
+  const manualDone = isDayMarkedDone(ds);
+  const isDone = allTasksDone || manualDone;
+
+  el.className = `day-card${isDone ? ' completed-day' : ''}`;
+
   const today = new Date();
   const todayStr = dateStr(today);
   if (ds === todayStr) el.classList.add('today');
 
-  el.innerHTML = `<div class="day-num">${d.getDate()}</div><div class="day-tasks">${
-    tasks.map(t => `
-      <button class="task-btn ${TASKS[t].cls} ${state[ds][t] ? 'done' : ''}"
-        onclick="toggleTask('${ds}','${t}')">
-        <span class="task-icon">${state[ds][t] ? '✅' : TASKS[t].icon}</span>
-        <span>${TASKS[t].label}</span>
-      </button>
-    `).join('')
-  }</div>`;
+  const btnLabel = manualDone ? '✅ Day Done!' : '☑ Mark Day Done';
+
+  el.innerHTML = `
+    <div class="day-num">${d.getDate()}</div>
+    <div class="day-tasks">
+      ${tasks.map(t => `
+        <button class="task-btn ${TASKS[t].cls} ${state[ds][t] ? 'done' : ''}"
+          onclick="toggleTask('${ds}','${t}')">
+          <span class="task-icon">${state[ds][t] ? '✅' : TASKS[t].icon}</span>
+          <span>${TASKS[t].label}</span>
+        </button>
+      `).join('')}
+    </div>
+    <button class="mark-day-btn" onclick="toggleDayDone('${ds}')">${btnLabel}</button>`;
 }
 
 function showPopup(emoji, msg) {
@@ -617,20 +944,147 @@ function launchConfetti() {
   }
 }
 
+// ── 5-DAY REWARD LOGIC ──────────────────────────────────────────
+
+function get5DayChunks() {
+  const all = getDates();
+  const chunks = [];
+  for (let i = 0; i < all.length; i += 5) chunks.push(all.slice(i, i + 5));
+  return chunks;
+}
+
+function getChunkPoints(chunk) {
+  return chunk.reduce((sum, d) => {
+    const ds = dateStr(d);
+    return sum + Object.entries(state[ds] || {}).reduce((s, [t, done]) => done ? s + TASKS[t].points : s, 0);
+  }, 0);
+}
+
+function getChunkMaxPoints(chunk) {
+  return chunk.reduce((sum, d) => sum + getTasksForDay(d).reduce((s, t) => s + TASKS[t].points, 0), 0);
+}
+
+function isChunkComplete(chunk) {
+  // A chunk is "complete" (ready to reward) when all its days have passed OR
+  // all tasks in the chunk are ticked — whichever comes first.
+  const today = new Date(); today.setHours(0,0,0,0);
+  const last = new Date(chunk[chunk.length-1]); last.setHours(0,0,0,0);
+  if (last < today) return true;
+  // Also mark complete if every task in every day of chunk is done
+  return chunk.every(d => {
+    const ds = dateStr(d);
+    const tasks = getTasksForDay(d);
+    return tasks.length > 0 && tasks.every(t => state[ds] && state[ds][t]);
+  });
+}
+
+function getRupees(earned, max) {
+  if (earned >= Math.ceil(max * 2 / 3)) return 10;
+  if (earned >= Math.ceil(max / 3))     return 5;
+  return 0;
+}
+
+function isPaid(chunkIdx) {
+  return localStorage.getItem(`reward_paid_${chunkIdx}`) === '1';
+}
+
+function markPaid(chunkIdx) {
+  // Once paid, lock it — require confirmation to undo
+  if (isPaid(chunkIdx)) {
+    if (!confirm('Undo payment? Only if you made a mistake!')) return;
+    localStorage.setItem(`reward_paid_${chunkIdx}`, '0');
+  } else {
+    localStorage.setItem(`reward_paid_${chunkIdx}`, '1');
+  }
+  rerenderRewardBlock(chunkIdx);
+}
+
+function rerenderRewardBlock(chunkIdx) {
+  const el = document.getElementById(`reward-block-${chunkIdx}`);
+  if (!el) return;
+  const chunks = get5DayChunks();
+  const tmp = document.createElement('div');
+  tmp.innerHTML = buildRewardBlockHTML(chunks[chunkIdx], chunkIdx);
+  el.replaceWith(tmp.firstElementChild);
+}
+
+function buildRewardBlockHTML(chunk, idx) {
+  // Always show real earned points — complete flag only controls the Pay button
+  const earned   = getChunkPoints(chunk);
+  const max      = getChunkMaxPoints(chunk);
+  const complete = isChunkComplete(chunk);
+  const rupees   = getRupees(earned, max);
+  const paid     = isPaid(idx);
+
+  const d1 = chunk[0].toLocaleDateString('en-IN', { day:'numeric', month:'short' });
+  const d2 = chunk[chunk.length-1].toLocaleDateString('en-IN', { day:'numeric', month:'short' });
+
+  const tiers = [
+    { range: `0–${Math.ceil(max/3)-1} pts`,                        rupee: '₹0',  min: 0,                   tierMax: Math.ceil(max/3)-1 },
+    { range: `${Math.ceil(max/3)}–${Math.ceil(max*2/3)-1} pts`,    rupee: '₹5',  min: Math.ceil(max/3),    tierMax: Math.ceil(max*2/3)-1 },
+    { range: `${Math.ceil(max*2/3)}–${max} pts`,                   rupee: '₹10', min: Math.ceil(max*2/3),  tierMax: max },
+  ];
+
+  const tiersHTML = tiers.map(t => {
+    const active = earned >= t.min && earned <= t.tierMax;
+    return `<div class="reward-tier${active ? ' active' : ''}">
+      <div class="tier-range">${t.range}</div>
+      <div class="tier-rupee">${t.rupee}</div>
+      <div class="tier-label">${active ? '← You!' : 'reward'}</div>
+    </div>`;
+  }).join('');
+
+  let actionHTML = '';
+  if (paid) {
+    // Locked paid state — show green, tap to undo with confirmation
+    actionHTML = `
+      <button class="pay-btn" onclick="markPaid(${idx})" title="Tap to undo">✅ Paid!</button>
+      <div class="pay-status">Payment done ✓</div>`;
+  } else if (!complete) {
+    actionHTML = `<div class="reward-incomplete">🕐 In progress…</div>`;
+  } else {
+    actionHTML = `
+      <button class="pay-btn" onclick="markPaid(${idx})">💰 Pay ₹${rupees}</button>
+      <div class="pay-status">Tap when paid</div>`;
+  }
+
+  return `<div class="reward-block${paid ? ' paid' : ''}" id="reward-block-${idx}">
+    <div class="reward-header">
+      <div class="reward-title">🏅 5-Day Reward Block #${idx+1}</div>
+      <div class="reward-dates">${d1} – ${d2}</div>
+    </div>
+    <div class="reward-body">
+      <div class="reward-pts-box">
+        <div class="reward-pts-earned">${earned}</div>
+        <div class="reward-pts-max">/ ${max} pts</div>
+      </div>
+      <div class="reward-tiers">${tiersHTML}</div>
+      <div class="reward-action">${actionHTML}</div>
+    </div>
+  </div>`;
+}
+
 function buildCalendar() {
   const container = document.getElementById('calendarContainer');
-  const dates = getDates();
+  const allDates  = getDates();
+  const chunks    = get5DayChunks();
+
+  // Build a lookup: dateStr → chunk index
+  const dateToChunk = {};
+  chunks.forEach((chunk, ci) => chunk.forEach(d => { dateToChunk[dateStr(d)] = ci; }));
 
   const months = {};
-  dates.forEach(d => {
+  allDates.forEach(d => {
     const key = `${d.getFullYear()}-${d.getMonth()}`;
     if (!months[key]) months[key] = { year: d.getFullYear(), month: d.getMonth(), days: [] };
     months[key].days.push(d);
   });
 
-  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const monthNames   = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const monthClasses = { 3: 'month-april', 4: 'month-may', 5: 'month-june' };
-  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const dayNames     = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  const renderedRewards = new Set();
 
   Object.values(months).forEach(({ year, month, days }) => {
     const section = document.createElement('div');
@@ -662,6 +1116,8 @@ function buildCalendar() {
     for (let w = 0; w < allCells.length / 7; w++) {
       const weekGrid = document.createElement('div');
       weekGrid.className = 'week-grid';
+      let lastChunkInRow = null;
+
       for (let d = 0; d < 7; d++) {
         const day = allCells[w * 7 + d];
         const cell = document.createElement('div');
@@ -671,15 +1127,65 @@ function buildCalendar() {
           const ds = dateStr(day);
           cell.setAttribute('data-date', ds);
           renderDayCard(cell, day);
+          // Check if this is the last day of its chunk
+          const ci = dateToChunk[ds];
+          const chunk = chunks[ci];
+          if (ds === dateStr(chunk[chunk.length - 1])) {
+            lastChunkInRow = ci;
+          }
         }
         weekGrid.appendChild(cell);
       }
       section.appendChild(weekGrid);
+
+      // Insert reward block after the row where a chunk ends
+      if (lastChunkInRow !== null && !renderedRewards.has(lastChunkInRow)) {
+        renderedRewards.add(lastChunkInRow);
+        const rewardDiv = document.createElement('div');
+        rewardDiv.innerHTML = buildRewardBlockHTML(chunks[lastChunkInRow], lastChunkInRow);
+        section.appendChild(rewardDiv.firstElementChild);
+      }
     }
 
     container.appendChild(section);
   });
 }
+
+// ── RESET PASSWORD ───────────────────────────────────────────────
+const RESET_PASSWORD = '1234'; // 👈 Change this to your own password!
+
+function openResetModal() {
+  document.getElementById('resetPassword').value = '';
+  document.getElementById('resetError').textContent = '';
+  document.getElementById('resetModal').classList.add('show');
+  setTimeout(() => document.getElementById('resetPassword').focus(), 100);
+}
+
+function closeResetModal() {
+  document.getElementById('resetModal').classList.remove('show');
+}
+
+function confirmReset() {
+  const input = document.getElementById('resetPassword');
+  const error = document.getElementById('resetError');
+  if (input.value === RESET_PASSWORD) {
+    localStorage.clear();
+    location.reload();
+  } else {
+    error.textContent = 'Wrong password! Try again 🚫';
+    input.value = '';
+    input.classList.remove('shake');
+    void input.offsetWidth; // force reflow to re-trigger animation
+    input.classList.add('shake');
+    setTimeout(() => input.classList.remove('shake'), 400);
+    input.focus();
+  }
+}
+
+// Close modal if overlay background is tapped
+document.getElementById('resetModal').addEventListener('click', function(e) {
+  if (e.target === this) closeResetModal();
+});
 
 loadState();
 buildCalendar();
