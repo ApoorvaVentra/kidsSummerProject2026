@@ -3,724 +3,391 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌟 Aadya's Summer Adventure Calendar</title>
+<title>🦄 My Magical Summer Calendar</title>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --sun: #FFD93D;
-    --coral: #FF6B6B;
-    --mint: #6BCB77;
-    --sky: #4D96FF;
-    --lavender: #C77DFF;
-    --peach: #FFB347;
-    --bg: #FFF9F0;
-    --card: #FFFFFF;
-    --text: #2D2D2D;
-    --soft: #F0E6FF;
+    --uni-pink:   #FF6FD8;
+    --uni-purple: #A855F7;
+    --uni-blue:   #60A5FA;
+    --uni-mint:   #34D399;
+    --uni-yellow: #FBBF24;
+    --uni-peach:  #FB7185;
+    --bg:         #FDF4FF;
+    --text:       #3B1D5E;
   }
-
+ 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   body {
     font-family: 'Nunito', sans-serif;
     background: var(--bg);
-    background-image: 
-      radial-gradient(circle at 10% 20%, #FFD93D22 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, #6BCB7722 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, #4D96FF11 0%, transparent 60%);
+    background-image:
+      radial-gradient(circle at 10% 15%, #FF6FD822 0%, transparent 35%),
+      radial-gradient(circle at 90% 80%, #A855F722 0%, transparent 35%),
+      radial-gradient(circle at 50% 50%, #60A5FA11 0%, transparent 55%),
+      radial-gradient(circle at 80% 10%, #FBBF2415 0%, transparent 30%);
     min-height: 100vh;
     color: var(--text);
   }
-
-  header {
-    text-align: center;
-    padding: 32px 20px 16px;
-    position: relative;
+ 
+  .sparkle {
+    position: fixed; pointer-events: none; font-size: 18px;
+    animation: floatUp 6s ease-in-out infinite; opacity: 0.35; z-index: 0;
   }
-
+  @keyframes floatUp {
+    0%   { transform: translateY(0)    rotate(0deg);   opacity: 0.35; }
+    50%  { transform: translateY(-30px) rotate(180deg); opacity: 0.6;  }
+    100% { transform: translateY(0)    rotate(360deg); opacity: 0.35; }
+  }
+ 
+  header { text-align: center; padding: 36px 20px 10px; position: relative; }
+ 
+  .unicorn-banner {
+    font-size: clamp(40px, 10vw, 80px); line-height: 1;
+    filter: drop-shadow(0 4px 12px rgba(168,85,247,0.3));
+    animation: bob 3s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-8px); }
+  }
+ 
   .title {
     font-family: 'Baloo 2', cursive;
-    font-size: clamp(28px, 6vw, 52px);
-    font-weight: 800;
-    background: linear-gradient(135deg, #FF6B6B, #FFD93D, #6BCB77, #4D96FF, #C77DFF);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 3s linear infinite;
-    line-height: 1.2;
+    font-size: clamp(24px, 5.5vw, 48px); font-weight: 800;
+    background: linear-gradient(135deg, #FF6FD8, #A855F7, #60A5FA, #34D399, #FBBF24);
+    background-size: 250% auto;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    animation: shimmer 4s linear infinite; line-height: 1.2; margin-top: 6px;
   }
-
   @keyframes shimmer {
-    0% { background-position: 0% center; }
-    100% { background-position: 200% center; }
+    0%   { background-position: 0%   center; }
+    100% { background-position: 250% center; }
   }
-
-  .subtitle {
-    font-size: 16px;
-    color: #888;
-    margin-top: 6px;
-    font-weight: 600;
-  }
-
-  /* SCORE BOARD */
+ 
+  .subtitle { font-size: 14px; color: #A855F7; margin-top: 4px; font-weight: 700; letter-spacing: 0.5px; }
+ 
+  /* SCOREBOARD */
   .scoreboard {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 16px 20px;
-    max-width: 700px;
-    margin: 0 auto 8px;
+    display: flex; justify-content: center; align-items: center;
+    gap: 14px; flex-wrap: wrap; padding: 16px 20px 8px;
+    max-width: 720px; margin: 0 auto;
   }
-
+ 
   .score-box {
-    background: white;
-    border-radius: 20px;
-    padding: 14px 28px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    text-align: center;
-    border: 3px solid var(--sun);
-    position: relative;
-    overflow: hidden;
+    background: white; border-radius: 22px; padding: 12px 24px;
+    box-shadow: 0 4px 20px rgba(168,85,247,0.12); text-align: center;
+    border: 3px solid transparent; position: relative; overflow: hidden;
   }
-
   .score-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #FFD93D, #FF6B6B, #6BCB77, #4D96FF);
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #FF6FD8, #A855F7, #60A5FA, #34D399, #FBBF24);
   }
-
-  .score-label {
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #999;
-  }
-
-  .score-value {
-    font-family: 'Baloo 2', cursive;
-    font-size: 38px;
-    font-weight: 800;
-    color: var(--coral);
-    line-height: 1;
-  }
-
-  .score-unit {
-    font-size: 12px;
-    font-weight: 700;
-    color: #bbb;
-  }
-
-  .level-box {
-    border-color: var(--lavender);
-  }
-
-  .level-box .score-value {
-    color: var(--lavender);
-    font-size: 22px;
-  }
-
-  /* LEGEND */
-  .legend {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 10px 20px 20px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: white;
-    border-radius: 30px;
-    padding: 6px 14px;
-    font-size: 13px;
-    font-weight: 700;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-  }
-
-  .legend-icon { font-size: 18px; }
-
-  /* CALENDAR */
-  .calendar-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 16px 40px;
-  }
-
-  .month-section {
-    margin-bottom: 36px;
-  }
-
-  .month-title {
-    font-family: 'Baloo 2', cursive;
-    font-size: 26px;
-    font-weight: 800;
-    padding: 10px 20px;
-    border-radius: 16px;
-    margin-bottom: 14px;
-    display: inline-block;
-  }
-
-  .month-april .month-title { background: linear-gradient(135deg, #FFD93D33, #FF6B6B22); color: #FF6B6B; }
-  .month-may .month-title { background: linear-gradient(135deg, #6BCB7733, #4D96FF22); color: #3a8e50; }
-  .month-june .month-title { background: linear-gradient(135deg, #4D96FF33, #C77DFF22); color: #4D96FF; }
-
-  .week-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-    margin-bottom: 10px;
-  }
-
-  .day-header {
-    text-align: center;
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #aaa;
-    padding: 4px 0;
-  }
-
-  .day-card {
-    background: white;
-    border-radius: 16px;
-    padding: 10px 7px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    border: 2px solid transparent;
-    transition: all 0.25s ease;
-    min-height: 90px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .day-card.empty {
-    background: transparent;
-    box-shadow: none;
-    border: none;
-  }
-
-  .day-card.today {
-    border-color: var(--sun);
-    box-shadow: 0 4px 16px rgba(255,217,61,0.3);
-  }
-
-  .day-card.completed-day {
-    background: linear-gradient(135deg, #f0fff4, #e8f5e9);
-    border-color: var(--mint);
-  }
-
-  .day-num {
-    font-family: 'Baloo 2', cursive;
-    font-size: 18px;
-    font-weight: 700;
-    color: #444;
-    margin-bottom: 4px;
-    line-height: 1;
-  }
-
-  .day-tasks {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .task-btn {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 2px 4px;
-    border-radius: 8px;
-    width: 100%;
-    text-align: left;
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    color: #666;
-    transition: all 0.2s;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-
-  .task-btn:hover { transform: scale(1.05); filter: brightness(0.95); }
-
-  .task-btn.done {
-    text-decoration: line-through;
-    opacity: 0.5;
-  }
-
-  .task-btn.done .task-icon { filter: grayscale(0.5); }
-
-  .task-reading { background: #FFF3CD; }
-  .task-planetspark { background: #E8F5E9; }
-  .task-chess { background: #E3F2FD; }
-  .task-dance { background: #F3E5F5; }
-
-  .task-reading.done { background: #f5f5f5; }
-  .task-planetspark.done { background: #f5f5f5; }
-  .task-chess.done { background: #f5f5f5; }
-  .task-dance.done { background: #f5f5f5; }
-
-  .task-icon { font-size: 13px; flex-shrink: 0; }
-
-  /* Mark day done button */
-  .mark-day-btn {
-    margin-top: 5px;
-    width: 100%;
-    background: none;
-    border: 1.5px dashed #ccc;
-    border-radius: 8px;
-    padding: 3px 4px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    color: #bbb;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: center;
-  }
-
-  .mark-day-btn:hover { border-color: var(--mint); color: var(--mint); background: #f0fff4; }
-
-  .day-card.completed-day .mark-day-btn {
-    border: 1.5px solid var(--mint);
-    color: var(--mint);
-    background: #e8f5e9;
-  }
-
-  /* Checkmark overlay on complete day */
-  .day-card.completed-day::after {
-    content: '✅';
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    font-size: 14px;
-    opacity: 0.6;
-  }
-
-  /* Points popup */
-  .points-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    background: white;
-    border-radius: 30px;
-    padding: 30px 40px;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    z-index: 1000;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    pointer-events: none;
-  }
-
-  .points-popup.show {
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  .points-popup .emoji { font-size: 50px; }
-  .points-popup .msg {
-    font-family: 'Baloo 2', cursive;
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--coral);
-  }
-
-  .confetti-piece {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    border-radius: 2px;
-    pointer-events: none;
-    z-index: 999;
-    animation: confettiFall 1.5s ease-in forwards;
-  }
-
-  @keyframes confettiFall {
-    0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-  }
-
-  .progress-bar-wrap {
-    max-width: 600px;
-    margin: 0 auto 20px;
-    padding: 0 20px;
-  }
-
+  .score-box.pts-box  { border-color: #FF6FD8; }
+  .score-box.done-box { border-color: #A855F7; }
+  .score-box.lvl-box  { border-color: #60A5FA; }
+ 
+  .score-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #C084FC; }
+  .score-value { font-family: 'Baloo 2', cursive; font-size: 36px; font-weight: 800; line-height: 1; }
+  .pts-box  .score-value { color: #FF6FD8; }
+  .done-box .score-value { color: #A855F7; }
+  .lvl-box  .score-value { color: #60A5FA; font-size: 20px; }
+  .score-unit { font-size: 11px; font-weight: 700; color: #D8B4FE; }
+ 
+  /* PROGRESS */
+  .progress-bar-wrap { max-width: 600px; margin: 4px auto 16px; padding: 0 20px; }
   .progress-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    font-weight: 800;
-    color: #aaa;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 6px;
+    display: flex; justify-content: space-between;
+    font-size: 11px; font-weight: 800; color: #C084FC;
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px;
   }
-
-  .progress-bar {
-    height: 14px;
-    background: #f0f0f0;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
+  .progress-bar { height: 14px; background: #F3E8FF; border-radius: 10px; overflow: hidden; }
   .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #FFD93D, #FF6B6B, #6BCB77, #4D96FF, #C77DFF);
-    background-size: 200% auto;
-    border-radius: 10px;
-    transition: width 0.6s ease;
-    animation: shimmer 2s linear infinite;
+    background: linear-gradient(90deg, #FF6FD8, #A855F7, #60A5FA, #34D399, #FBBF24);
+    background-size: 250% auto; border-radius: 10px;
+    transition: width 0.6s ease; animation: shimmer 3s linear infinite;
   }
-
-  .reset-btn {
-    display: block;
-    margin: 10px auto 0;
-    background: none;
-    border: 2px solid #ddd;
-    border-radius: 20px;
-    padding: 6px 18px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    color: #bbb;
+ 
+  /* LEGEND */
+  .legend {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 8px; padding: 4px 20px 20px; max-width: 800px; margin: 0 auto;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 6px; background: white;
+    border-radius: 30px; padding: 5px 12px; font-size: 12px; font-weight: 700;
+    box-shadow: 0 2px 10px rgba(168,85,247,0.1); color: #6B21A8;
+    border: 1.5px solid #E9D5FF;
+  }
+  .legend-icon { font-size: 16px; }
+ 
+  /* CALENDAR */
+  .calendar-container { max-width: 1100px; margin: 0 auto; padding: 0 14px 40px; }
+  .month-section { margin-bottom: 32px; }
+ 
+  .month-title {
+    font-family: 'Baloo 2', cursive; font-size: 24px; font-weight: 800;
+    padding: 8px 20px; border-radius: 16px; margin-bottom: 12px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .month-april .month-title { background: linear-gradient(135deg,#FF6FD822,#FB718522); color:#BE185D; }
+  .month-may   .month-title { background: linear-gradient(135deg,#A855F722,#60A5FA22); color:#7C3AED; }
+  .month-june  .month-title { background: linear-gradient(135deg,#60A5FA22,#34D39922); color:#1D4ED8; }
+ 
+  .week-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 7px; margin-bottom: 8px; }
+ 
+  .day-header {
+    text-align: center; font-size: 10px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.5px; color: #C084FC; padding: 4px 0;
+  }
+ 
+  .day-card {
+    background: white; border-radius: 16px; padding: 8px 6px;
+    box-shadow: 0 2px 10px rgba(168,85,247,0.07); border: 2px solid #F3E8FF;
+    transition: all 0.25s ease; min-height: 90px; position: relative; overflow: hidden;
+  }
+  .day-card.empty { background: transparent; box-shadow: none; border: none; }
+  .day-card.today { border-color: var(--uni-yellow); box-shadow: 0 4px 16px rgba(251,191,36,0.3); }
+  .day-card.completed-day {
+    background: linear-gradient(135deg, #FDF4FF, #F3E8FF);
+    border-color: var(--uni-purple);
+    box-shadow: 0 4px 14px rgba(168,85,247,0.18);
+  }
+  .day-card.completed-day::after {
+    content: '🦄'; position: absolute; top: 3px; right: 4px; font-size: 13px; opacity: 0.8;
+  }
+ 
+  .day-num { font-family: 'Baloo 2', cursive; font-size: 17px; font-weight: 700; color: #7C3AED; margin-bottom: 3px; line-height: 1; }
+  .day-tasks { display: flex; flex-direction: column; gap: 3px; }
+ 
+  .task-btn {
+    display: flex; align-items: center; gap: 4px; border: none;
+    padding: 2px 4px; border-radius: 8px; width: 100%; text-align: left;
+    font-family: 'Nunito', sans-serif; font-size: 10px; font-weight: 700;
+    color: #6B21A8; transition: all 0.2s; white-space: nowrap; overflow: hidden;
     cursor: pointer;
-    transition: all 0.2s;
   }
-
-  .reset-btn:hover { border-color: var(--coral); color: var(--coral); }
-
-  /* Password modal */
+  .task-btn:not(.done):hover { transform: scale(1.04); filter: brightness(0.94); }
+  .task-btn.done { opacity: 0.55; text-decoration: line-through; cursor: default; pointer-events: none; }
+ 
+  .task-reading     { background: #FFF0FB; }
+  .task-planetspark { background: #F0FFF4; }
+  .task-chess       { background: #EFF6FF; }
+  .task-dance       { background: #FAF5FF; }
+  .task-reading.done     { background: #F5F0FF; }
+  .task-planetspark.done { background: #F5F0FF; }
+  .task-chess.done       { background: #F5F0FF; }
+  .task-dance.done       { background: #F5F0FF; }
+ 
+  .task-icon { font-size: 12px; flex-shrink: 0; }
+ 
+  /* Mark day done button */
+  .mark-day-btn {
+    margin-top: 5px; width: 100%; background: none; border: 1.5px dashed #D8B4FE;
+    border-radius: 8px; padding: 3px 4px; font-family: 'Nunito', sans-serif;
+    font-size: 10px; font-weight: 700; color: #C084FC; cursor: pointer;
+    transition: all 0.2s; text-align: center;
+  }
+  .mark-day-btn:hover { border-color: var(--uni-purple); color: var(--uni-purple); background: #FAF5FF; }
+  .day-card.completed-day .mark-day-btn { border: 1.5px solid var(--uni-purple); color: var(--uni-purple); background: #F3E8FF; }
+ 
+  /* REWARD BLOCK */
+  .reward-block {
+    background: white; border-radius: 20px; margin: 4px 0 20px;
+    border: 3px solid #E9D5FF; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(168,85,247,0.12); transition: all 0.3s ease;
+  }
+  .reward-block.paid { border-color: var(--uni-mint); box-shadow: 0 4px 20px rgba(52,211,153,0.2); }
+ 
+  .reward-header {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 8px; padding: 12px 16px 10px;
+    background: linear-gradient(135deg, #FDF4FF, #FAF5FF);
+    border-bottom: 2px dashed #E9D5FF;
+  }
+  .reward-block.paid .reward-header { background: linear-gradient(135deg,#F0FFF9,#ECFDF5); border-bottom-color: #A7F3D0; }
+ 
+  .reward-title { font-family: 'Baloo 2', cursive; font-size: 15px; font-weight: 800; color: #7C3AED; display: flex; align-items: center; gap: 6px; }
+  .reward-block.paid .reward-title { color: #059669; }
+  .reward-dates { font-size: 11px; font-weight: 700; color: #C084FC; }
+ 
+  .reward-body { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 12px 16px; }
+  .reward-pts-box { text-align: center; min-width: 72px; }
+  .reward-pts-earned { font-family: 'Baloo 2', cursive; font-size: 34px; font-weight: 800; color: #A855F7; line-height: 1; }
+  .reward-block.paid .reward-pts-earned { color: var(--uni-mint); }
+  .reward-pts-max { font-size: 10px; font-weight: 700; color: #C084FC; }
+ 
+  .reward-tiers { display: flex; gap: 7px; flex-wrap: wrap; flex: 1; }
+  .reward-tier { flex: 1; min-width: 75px; border-radius: 12px; padding: 7px 8px; text-align: center; background: #F9F0FF; border: 2px solid transparent; transition: all 0.2s; }
+  .reward-tier.active { background: linear-gradient(135deg,#FAF5FF,#F3E8FF); border-color: #A855F7; transform: scale(1.05); }
+  .reward-tier.active .tier-rupee { color: #7C3AED; }
+  .reward-block.paid .reward-tier.active { background: linear-gradient(135deg,#ECFDF5,#D1FAE5); border-color: var(--uni-mint); }
+ 
+  .tier-range { font-size: 9px; font-weight: 700; color: #C084FC; }
+  .tier-rupee { font-family: 'Baloo 2', cursive; font-size: 18px; font-weight: 800; color: #D8B4FE; line-height: 1.2; }
+  .tier-label { font-size: 9px; font-weight: 700; color: #C084FC; text-transform: uppercase; }
+ 
+  .reward-action { display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 90px; }
+ 
+  .pay-btn {
+    background: linear-gradient(135deg, #A855F7, #7C3AED); border: none; border-radius: 30px;
+    padding: 9px 18px; font-family: 'Baloo 2', cursive; font-size: 14px; font-weight: 700;
+    color: white; cursor: pointer; box-shadow: 0 4px 12px rgba(168,85,247,0.4);
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .pay-btn:hover { transform: scale(1.05); box-shadow: 0 6px 16px rgba(168,85,247,0.5); }
+  .reward-block.paid .pay-btn { background: linear-gradient(135deg,#34D399,#059669); box-shadow: 0 4px 12px rgba(52,211,153,0.35); }
+ 
+  .pay-status { font-size: 10px; font-weight: 700; color: #C084FC; }
+  .reward-block.paid .pay-status { color: var(--uni-mint); }
+  .reward-incomplete { font-size: 11px; font-weight: 700; color: #C084FC; font-style: italic; }
+ 
+  /* POPUP */
+  .points-popup {
+    position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    background: white; border-radius: 28px; padding: 28px 36px;
+    text-align: center; box-shadow: 0 20px 60px rgba(168,85,247,0.25);
+    border: 3px solid #E9D5FF; z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); pointer-events: none;
+  }
+  .points-popup.show { transform: translate(-50%,-50%) scale(1); }
+  .points-popup .emoji { font-size: 48px; }
+  .points-popup .msg { font-family: 'Baloo 2', cursive; font-size: 26px; font-weight: 800; color: #A855F7; }
+ 
+  /* CONFETTI */
+  .confetti-piece {
+    position: fixed; width: 10px; height: 10px; border-radius: 2px;
+    pointer-events: none; z-index: 999;
+    animation: confettiFall 1.5s ease-in forwards;
+  }
+  @keyframes confettiFall {
+    0%   { transform: translateY(-100px) rotate(0deg);   opacity: 1; }
+    100% { transform: translateY(100vh)  rotate(720deg); opacity: 0; }
+  }
+ 
+  /* RESET BTN */
+  .reset-btn {
+    display: block; margin: 10px auto 0; background: none;
+    border: 2px solid #E9D5FF; border-radius: 20px; padding: 6px 18px;
+    font-family: 'Nunito', sans-serif; font-size: 12px; font-weight: 700;
+    color: #C084FC; cursor: pointer; transition: all 0.2s;
+  }
+  .reset-btn:hover { border-color: var(--uni-pink); color: var(--uni-pink); }
+ 
+  /* PASSWORD MODAL */
   .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
+    display: none; position: fixed; inset: 0;
+    background: rgba(59,29,94,0.45); z-index: 2000;
+    justify-content: center; align-items: center;
   }
   .modal-overlay.show { display: flex; }
-
   .modal-box {
-    background: white;
-    border-radius: 24px;
-    padding: 32px 28px 24px;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-    width: 300px;
+    background: white; border-radius: 28px; padding: 32px 28px 24px;
+    text-align: center; box-shadow: 0 20px 60px rgba(168,85,247,0.3);
+    border: 3px solid #E9D5FF; width: 300px;
     animation: popIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
   }
-
-  @keyframes popIn {
-    from { transform: scale(0.7); opacity: 0; }
-    to   { transform: scale(1);   opacity: 1; }
-  }
-
+  @keyframes popIn { from{transform:scale(0.7);opacity:0;} to{transform:scale(1);opacity:1;} }
   .modal-box .modal-icon { font-size: 40px; margin-bottom: 8px; }
-  .modal-box h3 {
-    font-family: 'Baloo 2', cursive;
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--coral);
-    margin-bottom: 6px;
-  }
-  .modal-box p { font-size: 13px; color: #888; margin-bottom: 16px; font-weight: 600; }
-
+  .modal-box h3 { font-family:'Baloo 2',cursive; font-size:20px; font-weight:800; color:#A855F7; margin-bottom:6px; }
+  .modal-box p  { font-size:13px; color:#C084FC; margin-bottom:16px; font-weight:600; }
   .modal-input {
-    width: 100%;
-    border: 2px solid #eee;
-    border-radius: 12px;
-    padding: 10px 14px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    text-align: center;
-    letter-spacing: 4px;
-    outline: none;
-    transition: border-color 0.2s;
-    margin-bottom: 6px;
+    width: 100%; border: 2px solid #E9D5FF; border-radius: 14px;
+    padding: 10px 14px; font-family:'Nunito',sans-serif; font-size:18px;
+    font-weight:700; text-align:center; letter-spacing:6px; outline:none;
+    transition:border-color 0.2s; margin-bottom:6px; color:#7C3AED;
   }
-  .modal-input:focus { border-color: var(--coral); }
-  .modal-input.shake {
-    animation: shake 0.35s ease;
-    border-color: var(--coral);
-  }
-  @keyframes shake {
-    0%,100% { transform: translateX(0); }
-    25%      { transform: translateX(-8px); }
-    75%      { transform: translateX(8px); }
-  }
-
-  .modal-error { font-size: 12px; color: var(--coral); font-weight: 700; min-height: 16px; margin-bottom: 12px; }
-
-  .modal-btns { display: flex; gap: 10px; }
+  .modal-input:focus { border-color: #A855F7; }
+  .modal-input.shake { animation: shake 0.35s ease; border-color: var(--uni-pink); }
+  @keyframes shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-8px);} 75%{transform:translateX(8px);} }
+  .modal-error { font-size:12px; color:var(--uni-pink); font-weight:700; min-height:16px; margin-bottom:12px; }
+  .modal-btns { display:flex; gap:10px; }
   .modal-cancel {
-    flex: 1; padding: 10px; border-radius: 12px;
-    border: 2px solid #eee; background: none;
-    font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 700;
-    color: #aaa; cursor: pointer;
+    flex:1; padding:10px; border-radius:14px; border:2px solid #E9D5FF; background:none;
+    font-family:'Nunito',sans-serif; font-size:14px; font-weight:700; color:#C084FC; cursor:pointer;
   }
-  .modal-cancel:hover { border-color: #ccc; color: #888; }
+  .modal-cancel:hover { border-color:#C084FC; }
   .modal-confirm {
-    flex: 1; padding: 10px; border-radius: 12px;
-    border: none; background: var(--coral);
-    font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 800;
-    color: white; cursor: pointer;
-    box-shadow: 0 4px 12px rgba(255,107,107,0.35);
+    flex:1; padding:10px; border-radius:14px; border:none;
+    background:linear-gradient(135deg,#A855F7,#7C3AED);
+    font-family:'Nunito',sans-serif; font-size:14px; font-weight:800;
+    color:white; cursor:pointer; box-shadow:0 4px 12px rgba(168,85,247,0.35);
   }
-  .modal-confirm:hover { filter: brightness(1.08); }
-
-  /* 5-DAY REWARD BLOCK */
-  .reward-block {
-    background: white;
-    border-radius: 20px;
-    margin: 6px 0 22px;
-    border: 3px solid #FFD93D;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(255,217,61,0.2);
-    transition: all 0.3s ease;
-  }
-
-  .reward-block.paid {
-    border-color: var(--mint);
-    box-shadow: 0 4px 20px rgba(107,203,119,0.2);
-    opacity: 0.85;
-  }
-
-  .reward-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 14px 18px 10px;
-    background: linear-gradient(135deg, #FFF9E6, #FFFDE7);
-    border-bottom: 2px dashed #FFD93D;
-  }
-
-  .reward-block.paid .reward-header {
-    background: linear-gradient(135deg, #F1FFF4, #E8F5E9);
-    border-bottom-color: var(--mint);
-  }
-
-  .reward-title {
-    font-family: 'Baloo 2', cursive;
-    font-size: 16px;
-    font-weight: 800;
-    color: #E65100;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .reward-block.paid .reward-title { color: #2e7d32; }
-
-  .reward-dates {
-    font-size: 12px;
-    font-weight: 700;
-    color: #aaa;
-  }
-
-  .reward-body {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 14px;
-    padding: 14px 18px;
-  }
-
-  .reward-pts-box {
-    text-align: center;
-    min-width: 80px;
-  }
-
-  .reward-pts-earned {
-    font-family: 'Baloo 2', cursive;
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--coral);
-    line-height: 1;
-  }
-
-  .reward-block.paid .reward-pts-earned { color: var(--mint); }
-
-  .reward-pts-max {
-    font-size: 11px;
-    font-weight: 700;
-    color: #bbb;
-  }
-
-  .reward-tiers {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    flex: 1;
-  }
-
-  .reward-tier {
-    flex: 1;
-    min-width: 80px;
-    border-radius: 12px;
-    padding: 8px 10px;
-    text-align: center;
-    background: #f5f5f5;
-    border: 2px solid transparent;
-    transition: all 0.2s;
-  }
-
-  .reward-tier.active {
-    background: linear-gradient(135deg, #FFF9C4, #FFE082);
-    border-color: #FFD93D;
-    transform: scale(1.05);
-  }
-
-  .reward-tier.active .tier-rupee { color: #E65100; }
-
-  .reward-block.paid .reward-tier.active {
-    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
-    border-color: var(--mint);
-  }
-
-  .tier-range {
-    font-size: 10px;
-    font-weight: 700;
-    color: #999;
-  }
-
-  .tier-rupee {
-    font-family: 'Baloo 2', cursive;
-    font-size: 20px;
-    font-weight: 800;
-    color: #ccc;
-    line-height: 1.2;
-  }
-
-  .tier-label {
-    font-size: 9px;
-    font-weight: 700;
-    color: #bbb;
-    text-transform: uppercase;
-  }
-
-  .reward-action {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    min-width: 100px;
-  }
-
-  .pay-btn {
-    background: linear-gradient(135deg, #FFD93D, #FFB300);
-    border: none;
-    border-radius: 30px;
-    padding: 10px 20px;
-    font-family: 'Baloo 2', cursive;
-    font-size: 15px;
-    font-weight: 700;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(255,179,0,0.4);
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-
-  .pay-btn:hover { transform: scale(1.05); box-shadow: 0 6px 16px rgba(255,179,0,0.5); }
-
-  .reward-block.paid .pay-btn {
-    background: linear-gradient(135deg, #6BCB77, #43A047);
-    box-shadow: 0 4px 12px rgba(67,160,71,0.3);
-  }
-
-  .pay-status {
-    font-size: 11px;
-    font-weight: 700;
-    color: #bbb;
-  }
-
-  .reward-block.paid .pay-status { color: var(--mint); }
-
-  .reward-incomplete {
-    font-size: 11px;
-    font-weight: 700;
-    color: #bbb;
-    font-style: italic;
-    padding: 2px 0;
-  }
-
-  @media (max-width: 600px) {
-    .week-grid { gap: 4px; }
-    .day-card { min-height: 80px; padding: 7px 4px; }
-    .day-num { font-size: 15px; }
-    .task-btn { font-size: 10px; padding: 1px 3px; }
-    .task-icon { font-size: 11px; }
+  .modal-confirm:hover { filter:brightness(1.08); }
+ 
+  @media (max-width:600px) {
+    .week-grid { gap:4px; }
+    .day-card  { min-height:80px; padding:6px 4px; }
+    .day-num   { font-size:14px; }
+    .task-btn  { font-size:9px; padding:1px 3px; }
+    .task-icon { font-size:10px; }
   }
 </style>
 </head>
 <body>
-
+ 
+<div class="sparkle" style="left:5%;top:20%;animation-delay:0s">✨</div>
+<div class="sparkle" style="left:92%;top:15%;animation-delay:1s">🌸</div>
+<div class="sparkle" style="left:15%;top:70%;animation-delay:2s">⭐</div>
+<div class="sparkle" style="left:85%;top:60%;animation-delay:0.5s">💫</div>
+<div class="sparkle" style="left:50%;top:5%;animation-delay:1.5s">🌟</div>
+<div class="sparkle" style="left:70%;top:85%;animation-delay:2.5s">✨</div>
+ 
 <header>
-  <div class="title">🌞 My Summer Adventure Calendar</div>
-  <div class="subtitle">April 24 – June 10 • Check off tasks & earn points!</div>
+  <div class="unicorn-banner">🦄</div>
+  <div class="title">My Magical Summer Calendar</div>
+  <div class="subtitle">✨ April 24 – June 10 · Check off tasks &amp; earn rewards! ✨</div>
 </header>
-
+ 
 <div class="scoreboard">
-  <div class="score-box">
+  <div class="score-box pts-box">
     <div class="score-label">⭐ Total Points</div>
     <div class="score-value" id="totalPoints">0</div>
-    <div class="score-unit">pts</div>
+    <div class="score-unit">magical pts</div>
   </div>
-  <div class="score-box">
-    <div class="score-label">🔥 Tasks Done</div>
+  <div class="score-box done-box">
+    <div class="score-label">🌸 Tasks Done</div>
     <div class="score-value" id="tasksDone">0</div>
     <div class="score-unit">tasks</div>
   </div>
-  <div class="score-box level-box">
-    <div class="score-label">🏆 Level</div>
-    <div class="score-value" id="levelName">Beginner</div>
+  <div class="score-box lvl-box">
+    <div class="score-label">🦄 Level</div>
+    <div class="score-value" id="levelName">Foal</div>
     <div class="score-unit" id="levelNext">0 pts to next</div>
   </div>
 </div>
-
+ 
 <div class="progress-bar-wrap">
   <div class="progress-label">
-    <span>Progress</span>
+    <span>✨ Magic Progress</span>
     <span id="progressPct">0%</span>
   </div>
   <div class="progress-bar">
     <div class="progress-fill" id="progressFill" style="width:0%"></div>
   </div>
 </div>
-
+ 
 <div class="legend">
   <div class="legend-item"><span class="legend-icon">📚</span> Reading (10min) — 5pts</div>
   <div class="legend-item"><span class="legend-icon">🚀</span> Planet Spark — 10pts</div>
-  <div class="legend-item"><span class="legend-icon">♟️</span> Chess (Wed & Fri) — 10pts</div>
-  <div class="legend-item"><span class="legend-icon">💃</span> Dance (Sat & Sun) — 10pts</div>
+  <div class="legend-item"><span class="legend-icon">♟️</span> Chess (Wed &amp; Fri) — 10pts</div>
+  <div class="legend-item"><span class="legend-icon">💃</span> Dance (Sat &amp; Sun) — 10pts</div>
 </div>
-
+ 
 <div class="calendar-container" id="calendarContainer"></div>
-
-<div style="text-align:center; padding-bottom: 30px;">
+ 
+<div style="text-align:center;padding-bottom:36px;">
   <button class="reset-btn" onclick="openResetModal()">🔄 Reset All Progress</button>
 </div>
-
-<!-- Password Modal -->
+ 
+<div class="points-popup" id="popup">
+  <div class="emoji" id="popupEmoji">⭐</div>
+  <div class="msg" id="popupMsg">+5 Points!</div>
+</div>
+ 
 <div class="modal-overlay" id="resetModal">
   <div class="modal-box">
     <div class="modal-icon">🔐</div>
@@ -728,7 +395,7 @@
     <p>Enter the password to reset all progress</p>
     <input class="modal-input" id="resetPassword" type="password"
       placeholder="••••" maxlength="20"
-      onkeydown="if(event.key==='Enter') confirmReset()"/>
+      onkeydown="if(event.key==='Enter')confirmReset()"/>
     <div class="modal-error" id="resetError"></div>
     <div class="modal-btns">
       <button class="modal-cancel" onclick="closeResetModal()">Cancel</button>
@@ -736,321 +403,227 @@
     </div>
   </div>
 </div>
-
-<div class="points-popup" id="popup">
-  <div class="emoji" id="popupEmoji">⭐</div>
-  <div class="msg" id="popupMsg">+5 Points!</div>
-</div>
-
+ 
 <script>
 const TASKS = {
-  reading:     { label: 'Reading',     icon: '📚', points: 5,  cls: 'task-reading',     days: 'all'          },
-  planetspark: { label: 'Planet Spark',icon: '🚀', points: 10, cls: 'task-planetspark',  days: 'all'          },
-  chess:       { label: 'Chess',       icon: '♟️', points: 10, cls: 'task-chess',        days: [3, 5]         }, // Wed=3, Fri=5
-  dance:       { label: 'Dance',       icon: '💃', points: 10, cls: 'task-dance',        days: [6, 0]         }, // Sat=6, Sun=0
+  reading:     {label:'Reading',      icon:'📚', points:5,  cls:'task-reading',     days:'all' },
+  planetspark: {label:'Planet Spark', icon:'🚀', points:10, cls:'task-planetspark',  days:'all' },
+  chess:       {label:'Chess',        icon:'♟️', points:10, cls:'task-chess',        days:[3,5] },
+  dance:       {label:'Dance',        icon:'💃', points:10, cls:'task-dance',        days:[6,0] },
 };
-
-const START = new Date(2025, 3, 24); // April 24, 2025
-const END   = new Date(2025, 5, 10); // June 10, 2025
-
+ 
+const START = new Date(2025,3,24);
+const END   = new Date(2025,5,10);
+ 
 const LEVELS = [
-  { name: '🌱 Beginner',   min: 0   },
-  { name: '⭐ Rising Star', min: 100 },
-  { name: '🌟 Champion',   min: 300 },
-  { name: '🏆 Legend',     min: 600 },
-  { name: '🚀 Superstar',  min: 1000},
-  { name: '👑 Grand Master', min: 1500 },
+  {name:'🐴 Foal',          min:0   },
+  {name:'🌸 Unicorn Pup',   min:100 },
+  {name:'✨ Sparkle Pony',  min:300 },
+  {name:'🌈 Rainbow Rider', min:600 },
+  {name:'🦄 True Unicorn',  min:1000},
+  {name:'👑 Magical Queen', min:1500},
 ];
-
+ 
+const RESET_PASSWORD = '1234'; // 👈 Change this to your own password!
+ 
 let state = {};
-
-function storageKey(dateStr, task) { return `cal_${dateStr}_${task}`; }
-
-function loadState() {
-  state = {};
-  const all = getDates();
-  all.forEach(d => {
-    const ds = dateStr(d);
-    state[ds] = {};
-    getTasksForDay(d).forEach(t => {
-      state[ds][t] = localStorage.getItem(storageKey(ds, t)) === '1';
-    });
+ 
+function storageKey(ds,t){ return `cal_${ds}_${t}`; }
+ 
+function loadState(){
+  state={};
+  getDates().forEach(d=>{
+    const ds=dateStr(d); state[ds]={};
+    getTasksForDay(d).forEach(t=>{ state[ds][t]=localStorage.getItem(storageKey(ds,t))==='1'; });
   });
 }
-
-function dateStr(d) {
+ 
+function dateStr(d){
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
-
-function getDates() {
-  const dates = [];
-  let cur = new Date(START);
-  while (cur <= END) {
-    dates.push(new Date(cur));
-    cur.setDate(cur.getDate() + 1);
-  }
+ 
+function getDates(){
+  const dates=[]; let cur=new Date(START);
+  while(cur<=END){dates.push(new Date(cur));cur.setDate(cur.getDate()+1);}
   return dates;
 }
-
-function getTasksForDay(d) {
-  const dow = d.getDay();
-  return Object.keys(TASKS).filter(t => {
-    const td = TASKS[t].days;
-    if (td === 'all') return true;
-    return td.includes(dow);
-  });
+ 
+function getTasksForDay(d){
+  const dow=d.getDay();
+  return Object.keys(TASKS).filter(t=>{ const td=TASKS[t].days; return td==='all'||td.includes(dow); });
 }
-
-function toggleTask(ds, task) {
-  const newVal = !state[ds][task];
-  state[ds][task] = newVal;
-  localStorage.setItem(storageKey(ds, task), newVal ? '1' : '0');
-
-  if (newVal) {
-    showPopup(TASKS[task].icon, `+${TASKS[task].points} pts!`);
-    launchConfetti();
-  }
-
+ 
+// ONE-WAY: can tick, cannot untick
+function toggleTask(ds,task){
+  if(state[ds][task]) return; // already done — ignore
+  state[ds][task]=true;
+  localStorage.setItem(storageKey(ds,task),'1');
+  showPopup(TASKS[task].icon,`+${TASKS[task].points} pts!`);
+  launchConfetti();
   updateScores();
   rerenderDay(ds);
-
-  // Also update the reward block for this day's chunk
-  const chunks = get5DayChunks();
-  const ci = chunks.findIndex(chunk => chunk.some(d => dateStr(d) === ds));
-  if (ci !== -1) rerenderRewardBlock(ci);
+  const chunks=get5DayChunks();
+  const ci=chunks.findIndex(c=>c.some(d=>dateStr(d)===ds));
+  if(ci!==-1) rerenderRewardBlock(ci);
 }
-
-function getTotalPoints() {
-  let pts = 0;
-  Object.entries(state).forEach(([ds, tasks]) => {
-    Object.entries(tasks).forEach(([t, done]) => {
-      if (done) pts += TASKS[t].points;
-    });
-  });
+ 
+function isDayMarkedDone(ds){ return localStorage.getItem(`day_done_${ds}`)==='1'; }
+ 
+function toggleDayDone(ds){
+  const newVal=!isDayMarkedDone(ds);
+  localStorage.setItem(`day_done_${ds}`,newVal?'1':'0');
+  rerenderDay(ds);
+  const chunks=get5DayChunks();
+  const ci=chunks.findIndex(c=>c.some(d=>dateStr(d)===ds));
+  if(ci!==-1) rerenderRewardBlock(ci);
+}
+ 
+function getTotalPoints(){
+  let pts=0;
+  Object.entries(state).forEach(([ds,tasks])=>{ Object.entries(tasks).forEach(([t,done])=>{ if(done) pts+=TASKS[t].points; }); });
   return pts;
 }
-
-function getTotalTasksDone() {
-  let n = 0;
-  Object.values(state).forEach(tasks => {
-    Object.values(tasks).forEach(done => { if (done) n++; });
-  });
-  return n;
+function getTotalTasksDone(){
+  let n=0; Object.values(state).forEach(tasks=>Object.values(tasks).forEach(done=>{if(done)n++;})); return n;
 }
-
-function getTotalPossibleTasks() {
-  return getDates().reduce((acc, d) => acc + getTasksForDay(d).length, 0);
+function getTotalPossibleTasks(){ return getDates().reduce((acc,d)=>acc+getTasksForDay(d).length,0); }
+ 
+function getLevel(pts){ let l=LEVELS[0]; for(const lv of LEVELS){if(pts>=lv.min)l=lv;} return l; }
+ 
+function updateScores(){
+  const pts=getTotalPoints(), done=getTotalTasksDone(), total=getTotalPossibleTasks();
+  const pct=Math.round((done/total)*100);
+  document.getElementById('totalPoints').textContent=pts;
+  document.getElementById('tasksDone').textContent=done;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('progressPct').textContent=pct+'%';
+  const lvl=getLevel(pts), lvlIdx=LEVELS.indexOf(lvl);
+  document.getElementById('levelName').textContent=lvl.name;
+  document.getElementById('levelNext').textContent=lvlIdx<LEVELS.length-1
+    ?`${LEVELS[lvlIdx+1].min-pts} pts to next`:'Max level! 🎉';
 }
-
-function getLevel(pts) {
-  let level = LEVELS[0];
-  for (let l of LEVELS) {
-    if (pts >= l.min) level = l;
-  }
-  return level;
+ 
+function rerenderDay(ds){
+  const el=document.querySelector(`[data-date="${ds}"]`);
+  if(el) renderDayCard(el,new Date(ds.replace(/-/g,'/')));
 }
-
-function updateScores() {
-  const pts = getTotalPoints();
-  const done = getTotalTasksDone();
-  const total = getTotalPossibleTasks();
-  const pct = Math.round((done / total) * 100);
-
-  document.getElementById('totalPoints').textContent = pts;
-  document.getElementById('tasksDone').textContent = done;
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressPct').textContent = pct + '%';
-
-  const lvl = getLevel(pts);
-  const lvlIdx = LEVELS.indexOf(lvl);
-  document.getElementById('levelName').textContent = lvl.name;
-  if (lvlIdx < LEVELS.length - 1) {
-    const next = LEVELS[lvlIdx + 1];
-    document.getElementById('levelNext').textContent = `${next.min - pts} pts to next`;
-  } else {
-    document.getElementById('levelNext').textContent = 'Max level! 🎉';
-  }
-}
-
-function rerenderDay(ds) {
-  const el = document.querySelector(`[data-date="${ds}"]`);
-  if (!el) return;
-  renderDayCard(el, new Date(ds.replace(/-/g, '/')));
-}
-
-function isDayMarkedDone(ds) {
-  return localStorage.getItem(`day_done_${ds}`) === '1';
-}
-
-function toggleDayDone(ds) {
-  const newVal = !isDayMarkedDone(ds);
-  localStorage.setItem(`day_done_${ds}`, newVal ? '1' : '0');
-  rerenderDay(ds);
-  // Update reward block for this chunk too
-  const chunks = get5DayChunks();
-  const ci = chunks.findIndex(chunk => chunk.some(d => dateStr(d) === ds));
-  if (ci !== -1) rerenderRewardBlock(ci);
-}
-
-function renderDayCard(el, d) {
-  const ds = dateStr(d);
-  const tasks = getTasksForDay(d);
-  const allTasksDone = tasks.length > 0 && tasks.every(t => state[ds][t]);
-  const manualDone = isDayMarkedDone(ds);
-  const isDone = allTasksDone || manualDone;
-
-  el.className = `day-card${isDone ? ' completed-day' : ''}`;
-
-  const today = new Date();
-  const todayStr = dateStr(today);
-  if (ds === todayStr) el.classList.add('today');
-
-  const btnLabel = manualDone ? '✅ Day Done!' : '☑ Mark Day Done';
-
-  el.innerHTML = `
+ 
+function renderDayCard(el,d){
+  const ds=dateStr(d), tasks=getTasksForDay(d);
+  const allTasksDone=tasks.length>0&&tasks.every(t=>state[ds][t]);
+  const manualDone=isDayMarkedDone(ds);
+  const isDone=allTasksDone||manualDone;
+  el.className=`day-card${isDone?' completed-day':''}`;
+  if(dateStr(new Date())===ds) el.classList.add('today');
+  const btnLabel=manualDone?'🦄 Day Done!':'☑ Mark Day Done';
+  el.innerHTML=`
     <div class="day-num">${d.getDate()}</div>
     <div class="day-tasks">
-      ${tasks.map(t => `
-        <button class="task-btn ${TASKS[t].cls} ${state[ds][t] ? 'done' : ''}"
-          onclick="toggleTask('${ds}','${t}')">
-          <span class="task-icon">${state[ds][t] ? '✅' : TASKS[t].icon}</span>
+      ${tasks.map(t=>`
+        <button class="task-btn ${TASKS[t].cls}${state[ds][t]?' done':''}"
+          ${state[ds][t]?'':` onclick="toggleTask('${ds}','${t}')"`}>
+          <span class="task-icon">${state[ds][t]?'✅':TASKS[t].icon}</span>
           <span>${TASKS[t].label}</span>
-        </button>
-      `).join('')}
+        </button>`).join('')}
     </div>
     <button class="mark-day-btn" onclick="toggleDayDone('${ds}')">${btnLabel}</button>`;
 }
-
-function showPopup(emoji, msg) {
-  const popup = document.getElementById('popup');
-  document.getElementById('popupEmoji').textContent = emoji;
-  document.getElementById('popupMsg').textContent = msg;
-  popup.classList.add('show');
-  setTimeout(() => popup.classList.remove('show'), 1200);
+ 
+function showPopup(emoji,msg){
+  document.getElementById('popupEmoji').textContent=emoji;
+  document.getElementById('popupMsg').textContent=msg;
+  const p=document.getElementById('popup');
+  p.classList.add('show');
+  setTimeout(()=>p.classList.remove('show'),1200);
 }
-
-function launchConfetti() {
-  const colors = ['#FFD93D','#FF6B6B','#6BCB77','#4D96FF','#C77DFF','#FFB347'];
-  for (let i = 0; i < 18; i++) {
-    const el = document.createElement('div');
-    el.className = 'confetti-piece';
-    el.style.left = Math.random() * 100 + 'vw';
-    el.style.top = '-20px';
-    el.style.background = colors[Math.floor(Math.random() * colors.length)];
-    el.style.animationDelay = Math.random() * 0.5 + 's';
-    el.style.transform = `rotate(${Math.random()*360}deg)`;
+ 
+function launchConfetti(){
+  const colors=['#FF6FD8','#A855F7','#60A5FA','#34D399','#FBBF24','#FB7185'];
+  for(let i=0;i<22;i++){
+    const el=document.createElement('div');
+    el.className='confetti-piece';
+    el.style.left=Math.random()*100+'vw'; el.style.top='-20px';
+    el.style.background=colors[Math.floor(Math.random()*colors.length)];
+    el.style.animationDelay=Math.random()*0.6+'s';
+    el.style.borderRadius=Math.random()>0.5?'50%':'2px';
+    el.style.transform=`rotate(${Math.random()*360}deg)`;
     document.body.appendChild(el);
-    setTimeout(() => el.remove(), 2000);
+    setTimeout(()=>el.remove(),2200);
   }
 }
-
-// ── 5-DAY REWARD LOGIC ──────────────────────────────────────────
-
-function get5DayChunks() {
-  const all = getDates();
-  const chunks = [];
-  for (let i = 0; i < all.length; i += 5) chunks.push(all.slice(i, i + 5));
+ 
+function get5DayChunks(){
+  const all=getDates(),chunks=[];
+  for(let i=0;i<all.length;i+=5) chunks.push(all.slice(i,i+5));
   return chunks;
 }
-
-function getChunkPoints(chunk) {
-  return chunk.reduce((sum, d) => {
-    const ds = dateStr(d);
-    return sum + Object.entries(state[ds] || {}).reduce((s, [t, done]) => done ? s + TASKS[t].points : s, 0);
-  }, 0);
+ 
+function getChunkPoints(chunk){
+  return chunk.reduce((sum,d)=>{
+    const ds=dateStr(d);
+    return sum+Object.entries(state[ds]||{}).reduce((s,[t,done])=>done?s+TASKS[t].points:s,0);
+  },0);
 }
-
-function getChunkMaxPoints(chunk) {
-  return chunk.reduce((sum, d) => sum + getTasksForDay(d).reduce((s, t) => s + TASKS[t].points, 0), 0);
+function getChunkMaxPoints(chunk){
+  return chunk.reduce((sum,d)=>sum+getTasksForDay(d).reduce((s,t)=>s+TASKS[t].points,0),0);
 }
-
-function isChunkComplete(chunk) {
-  // A chunk is "complete" (ready to reward) when all its days have passed OR
-  // all tasks in the chunk are ticked — whichever comes first.
-  const today = new Date(); today.setHours(0,0,0,0);
-  const last = new Date(chunk[chunk.length-1]); last.setHours(0,0,0,0);
-  if (last < today) return true;
-  // Also mark complete if every task in every day of chunk is done
-  return chunk.every(d => {
-    const ds = dateStr(d);
-    const tasks = getTasksForDay(d);
-    return tasks.length > 0 && tasks.every(t => state[ds] && state[ds][t]);
-  });
+function isChunkComplete(chunk){
+  const today=new Date();today.setHours(0,0,0,0);
+  const last=new Date(chunk[chunk.length-1]);last.setHours(0,0,0,0);
+  if(last<today) return true;
+  return chunk.every(d=>{ const ds=dateStr(d); return getTasksForDay(d).every(t=>state[ds]&&state[ds][t]); });
 }
-
-function getRupees(earned, max) {
-  if (earned >= Math.ceil(max * 2 / 3)) return 10;
-  if (earned >= Math.ceil(max / 3))     return 5;
+function getRupees(earned,max){
+  if(earned>=Math.ceil(max*2/3)) return 10;
+  if(earned>=Math.ceil(max/3))   return 5;
   return 0;
 }
-
-function isPaid(chunkIdx) {
-  return localStorage.getItem(`reward_paid_${chunkIdx}`) === '1';
-}
-
-function markPaid(chunkIdx) {
-  // Once paid, lock it — require confirmation to undo
-  if (isPaid(chunkIdx)) {
-    if (!confirm('Undo payment? Only if you made a mistake!')) return;
-    localStorage.setItem(`reward_paid_${chunkIdx}`, '0');
+function isPaid(idx){ return localStorage.getItem(`reward_paid_${idx}`)==='1'; }
+ 
+function markPaid(idx){
+  if(isPaid(idx)){
+    if(!confirm('Undo payment? Only if you made a mistake!')) return;
+    localStorage.setItem(`reward_paid_${idx}`,'0');
   } else {
-    localStorage.setItem(`reward_paid_${chunkIdx}`, '1');
+    localStorage.setItem(`reward_paid_${idx}`,'1');
   }
-  rerenderRewardBlock(chunkIdx);
+  rerenderRewardBlock(idx);
 }
-
-function rerenderRewardBlock(chunkIdx) {
-  const el = document.getElementById(`reward-block-${chunkIdx}`);
-  if (!el) return;
-  const chunks = get5DayChunks();
-  const tmp = document.createElement('div');
-  tmp.innerHTML = buildRewardBlockHTML(chunks[chunkIdx], chunkIdx);
+ 
+function rerenderRewardBlock(idx){
+  const el=document.getElementById(`reward-block-${idx}`);
+  if(!el) return;
+  const tmp=document.createElement('div');
+  tmp.innerHTML=buildRewardBlockHTML(get5DayChunks()[idx],idx);
   el.replaceWith(tmp.firstElementChild);
 }
-
-function buildRewardBlockHTML(chunk, idx) {
-  // Always show real earned points — complete flag only controls the Pay button
-  const earned   = getChunkPoints(chunk);
-  const max      = getChunkMaxPoints(chunk);
-  const complete = isChunkComplete(chunk);
-  const rupees   = getRupees(earned, max);
-  const paid     = isPaid(idx);
-
-  const d1 = chunk[0].toLocaleDateString('en-IN', { day:'numeric', month:'short' });
-  const d2 = chunk[chunk.length-1].toLocaleDateString('en-IN', { day:'numeric', month:'short' });
-
-  const tiers = [
-    { range: `0–${Math.ceil(max/3)-1} pts`,                        rupee: '₹0',  min: 0,                   tierMax: Math.ceil(max/3)-1 },
-    { range: `${Math.ceil(max/3)}–${Math.ceil(max*2/3)-1} pts`,    rupee: '₹5',  min: Math.ceil(max/3),    tierMax: Math.ceil(max*2/3)-1 },
-    { range: `${Math.ceil(max*2/3)}–${max} pts`,                   rupee: '₹10', min: Math.ceil(max*2/3),  tierMax: max },
+ 
+function buildRewardBlockHTML(chunk,idx){
+  const earned=getChunkPoints(chunk),max=getChunkMaxPoints(chunk);
+  const complete=isChunkComplete(chunk),rupees=getRupees(earned,max),paid=isPaid(idx);
+  const d1=chunk[0].toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+  const d2=chunk[chunk.length-1].toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+  const tiers=[
+    {range:`0–${Math.ceil(max/3)-1} pts`,               rupee:'₹0',  min:0,                  tierMax:Math.ceil(max/3)-1      },
+    {range:`${Math.ceil(max/3)}–${Math.ceil(max*2/3)-1} pts`, rupee:'₹5', min:Math.ceil(max/3), tierMax:Math.ceil(max*2/3)-1},
+    {range:`${Math.ceil(max*2/3)}–${max} pts`,           rupee:'₹10', min:Math.ceil(max*2/3), tierMax:max                    },
   ];
-
-  const tiersHTML = tiers.map(t => {
-    const active = earned >= t.min && earned <= t.tierMax;
-    return `<div class="reward-tier${active ? ' active' : ''}">
+  const tiersHTML=tiers.map(t=>{
+    const active=earned>=t.min&&earned<=t.tierMax;
+    return `<div class="reward-tier${active?' active':''}">
       <div class="tier-range">${t.range}</div>
       <div class="tier-rupee">${t.rupee}</div>
-      <div class="tier-label">${active ? '← You!' : 'reward'}</div>
+      <div class="tier-label">${active?'← You!':'reward'}</div>
     </div>`;
   }).join('');
-
-  let actionHTML = '';
-  if (paid) {
-    // Locked paid state — show green, tap to undo with confirmation
-    actionHTML = `
-      <button class="pay-btn" onclick="markPaid(${idx})" title="Tap to undo">✅ Paid!</button>
-      <div class="pay-status">Payment done ✓</div>`;
-  } else if (!complete) {
-    actionHTML = `<div class="reward-incomplete">🕐 In progress…</div>`;
-  } else {
-    actionHTML = `
-      <button class="pay-btn" onclick="markPaid(${idx})">💰 Pay ₹${rupees}</button>
-      <div class="pay-status">Tap when paid</div>`;
-  }
-
-  return `<div class="reward-block${paid ? ' paid' : ''}" id="reward-block-${idx}">
+  const actionHTML=paid
+    ?`<button class="pay-btn" onclick="markPaid(${idx})" title="Tap to undo">✅ Paid!</button><div class="pay-status">Payment done ✓</div>`
+    :!complete
+      ?`<div class="reward-incomplete">🕐 In progress…</div>`
+      :`<button class="pay-btn" onclick="markPaid(${idx})">💰 Pay ₹${rupees}</button><div class="pay-status">Tap when paid</div>`;
+  return `<div class="reward-block${paid?' paid':''}" id="reward-block-${idx}">
     <div class="reward-header">
-      <div class="reward-title">🏅 5-Day Reward Block #${idx+1}</div>
+      <div class="reward-title">🦄 5-Day Reward Block #${idx+1}</div>
       <div class="reward-dates">${d1} – ${d2}</div>
     </div>
     <div class="reward-body">
@@ -1063,130 +636,90 @@ function buildRewardBlockHTML(chunk, idx) {
     </div>
   </div>`;
 }
-
-function buildCalendar() {
-  const container = document.getElementById('calendarContainer');
-  const allDates  = getDates();
-  const chunks    = get5DayChunks();
-
-  // Build a lookup: dateStr → chunk index
-  const dateToChunk = {};
-  chunks.forEach((chunk, ci) => chunk.forEach(d => { dateToChunk[dateStr(d)] = ci; }));
-
-  const months = {};
-  allDates.forEach(d => {
-    const key = `${d.getFullYear()}-${d.getMonth()}`;
-    if (!months[key]) months[key] = { year: d.getFullYear(), month: d.getMonth(), days: [] };
+ 
+function buildCalendar(){
+  const container=document.getElementById('calendarContainer');
+  const allDates=getDates(), chunks=get5DayChunks();
+  const dateToChunk={};
+  chunks.forEach((chunk,ci)=>chunk.forEach(d=>{dateToChunk[dateStr(d)]=ci;}));
+  const months={};
+  allDates.forEach(d=>{
+    const key=`${d.getFullYear()}-${d.getMonth()}`;
+    if(!months[key]) months[key]={year:d.getFullYear(),month:d.getMonth(),days:[]};
     months[key].days.push(d);
   });
-
-  const monthNames   = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const monthClasses = { 3: 'month-april', 4: 'month-may', 5: 'month-june' };
-  const dayNames     = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-
-  const renderedRewards = new Set();
-
-  Object.values(months).forEach(({ year, month, days }) => {
-    const section = document.createElement('div');
-    section.className = `month-section ${monthClasses[month] || ''}`;
-
-    const title = document.createElement('div');
-    title.className = 'month-title';
-    title.textContent = `${monthNames[month]} ${year}`;
+  const monthNames=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const monthEmojis={3:'🌸',4:'🌈',5:'☀️'};
+  const monthClasses={3:'month-april',4:'month-may',5:'month-june'};
+  const dayNames=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const renderedRewards=new Set();
+ 
+  Object.values(months).forEach(({year,month,days})=>{
+    const section=document.createElement('div');
+    section.className=`month-section ${monthClasses[month]||''}`;
+    const title=document.createElement('div');
+    title.className='month-title';
+    title.textContent=`${monthEmojis[month]||''} ${monthNames[month]} ${year}`;
     section.appendChild(title);
-
-    // Day headers
-    const headerGrid = document.createElement('div');
-    headerGrid.className = 'week-grid';
-    dayNames.forEach(n => {
-      const h = document.createElement('div');
-      h.className = 'day-header';
-      h.textContent = n;
-      headerGrid.appendChild(h);
-    });
+    const headerGrid=document.createElement('div');
+    headerGrid.className='week-grid';
+    dayNames.forEach(n=>{ const h=document.createElement('div'); h.className='day-header'; h.textContent=n; headerGrid.appendChild(h); });
     section.appendChild(headerGrid);
-
-    // Build weeks
-    const firstDay = days[0].getDay();
-    const allCells = [];
-    for (let i = 0; i < firstDay; i++) allCells.push(null);
-    days.forEach(d => allCells.push(d));
-    while (allCells.length % 7 !== 0) allCells.push(null);
-
-    for (let w = 0; w < allCells.length / 7; w++) {
-      const weekGrid = document.createElement('div');
-      weekGrid.className = 'week-grid';
-      let lastChunkInRow = null;
-
-      for (let d = 0; d < 7; d++) {
-        const day = allCells[w * 7 + d];
-        const cell = document.createElement('div');
-        if (!day) {
-          cell.className = 'day-card empty';
-        } else {
-          const ds = dateStr(day);
-          cell.setAttribute('data-date', ds);
-          renderDayCard(cell, day);
-          // Check if this is the last day of its chunk
-          const ci = dateToChunk[ds];
-          const chunk = chunks[ci];
-          if (ds === dateStr(chunk[chunk.length - 1])) {
-            lastChunkInRow = ci;
-          }
+    const firstDay=days[0].getDay(), allCells=[];
+    for(let i=0;i<firstDay;i++) allCells.push(null);
+    days.forEach(d=>allCells.push(d));
+    while(allCells.length%7!==0) allCells.push(null);
+    for(let w=0;w<allCells.length/7;w++){
+      const weekGrid=document.createElement('div');
+      weekGrid.className='week-grid';
+      let lastChunkInRow=null;
+      for(let d=0;d<7;d++){
+        const day=allCells[w*7+d], cell=document.createElement('div');
+        if(!day){ cell.className='day-card empty'; }
+        else {
+          const ds=dateStr(day);
+          cell.setAttribute('data-date',ds);
+          renderDayCard(cell,day);
+          const ci=dateToChunk[ds], chunk=chunks[ci];
+          if(ds===dateStr(chunk[chunk.length-1])) lastChunkInRow=ci;
         }
         weekGrid.appendChild(cell);
       }
       section.appendChild(weekGrid);
-
-      // Insert reward block after the row where a chunk ends
-      if (lastChunkInRow !== null && !renderedRewards.has(lastChunkInRow)) {
+      if(lastChunkInRow!==null&&!renderedRewards.has(lastChunkInRow)){
         renderedRewards.add(lastChunkInRow);
-        const rewardDiv = document.createElement('div');
-        rewardDiv.innerHTML = buildRewardBlockHTML(chunks[lastChunkInRow], lastChunkInRow);
-        section.appendChild(rewardDiv.firstElementChild);
+        const rd=document.createElement('div');
+        rd.innerHTML=buildRewardBlockHTML(chunks[lastChunkInRow],lastChunkInRow);
+        section.appendChild(rd.firstElementChild);
       }
     }
-
     container.appendChild(section);
   });
 }
-
-// ── RESET PASSWORD ───────────────────────────────────────────────
-const RESET_PASSWORD = '1234'; // 👈 Change this to your own password!
-
-function openResetModal() {
-  document.getElementById('resetPassword').value = '';
-  document.getElementById('resetError').textContent = '';
+ 
+function openResetModal(){
+  document.getElementById('resetPassword').value='';
+  document.getElementById('resetError').textContent='';
   document.getElementById('resetModal').classList.add('show');
-  setTimeout(() => document.getElementById('resetPassword').focus(), 100);
+  setTimeout(()=>document.getElementById('resetPassword').focus(),100);
 }
-
-function closeResetModal() {
-  document.getElementById('resetModal').classList.remove('show');
-}
-
-function confirmReset() {
-  const input = document.getElementById('resetPassword');
-  const error = document.getElementById('resetError');
-  if (input.value === RESET_PASSWORD) {
-    localStorage.clear();
-    location.reload();
-  } else {
-    error.textContent = 'Wrong password! Try again 🚫';
-    input.value = '';
+function closeResetModal(){ document.getElementById('resetModal').classList.remove('show'); }
+function confirmReset(){
+  const input=document.getElementById('resetPassword');
+  const error=document.getElementById('resetError');
+  if(input.value===RESET_PASSWORD){ localStorage.clear(); location.reload(); }
+  else {
+    error.textContent='Wrong password! Try again 🚫';
+    input.value='';
     input.classList.remove('shake');
-    void input.offsetWidth; // force reflow to re-trigger animation
+    void input.offsetWidth;
     input.classList.add('shake');
-    setTimeout(() => input.classList.remove('shake'), 400);
+    setTimeout(()=>input.classList.remove('shake'),400);
     input.focus();
   }
 }
-
-// Close modal if overlay background is tapped
-document.getElementById('resetModal').addEventListener('click', function(e) {
-  if (e.target === this) closeResetModal();
-});
-
+document.getElementById('resetModal').addEventListener('click',function(e){ if(e.target===this) closeResetModal(); });
+ 
 loadState();
 buildCalendar();
 updateScores();
