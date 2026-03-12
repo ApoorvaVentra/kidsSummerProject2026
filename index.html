@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌟 My Summer Adventure Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sun: #FFD93D;
+    --coral: #FF6B6B;
+    --mint: #6BCB77;
+    --sky: #4D96FF;
+    --lavender: #C77DFF;
+    --peach: #FFB347;
+    --bg: #FFF9F0;
+    --card: #FFFFFF;
+    --text: #2D2D2D;
+    --soft: #F0E6FF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    background-image: 
+      radial-gradient(circle at 10% 20%, #FFD93D22 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, #6BCB7722 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, #4D96FF11 0%, transparent 60%);
+    min-height: 100vh;
+    color: var(--text);
+  }
+
+  header {
+    text-align: center;
+    padding: 32px 20px 16px;
+    position: relative;
+  }
+
+  .title {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF6B6B, #FFD93D, #6BCB77, #4D96FF, #C77DFF);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+    line-height: 1.2;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .subtitle {
+    font-size: 16px;
+    color: #888;
+    margin-top: 6px;
+    font-weight: 600;
+  }
+
+  /* SCORE BOARD */
+  .scoreboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 16px 20px;
+    max-width: 700px;
+    margin: 0 auto 8px;
+  }
+
+  .score-box {
+    background: white;
+    border-radius: 20px;
+    padding: 14px 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    border: 3px solid var(--sun);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .score-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #FFD93D, #FF6B6B, #6BCB77, #4D96FF);
+  }
+
+  .score-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+  }
+
+  .score-value {
+    font-family: 'Baloo 2', cursive;
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--coral);
+    line-height: 1;
+  }
+
+  .score-unit {
+    font-size: 12px;
+    font-weight: 700;
+    color: #bbb;
+  }
+
+  .level-box {
+    border-color: var(--lavender);
+  }
+
+  .level-box .score-value {
+    color: var(--lavender);
+    font-size: 22px;
+  }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 20px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    border-radius: 30px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  }
+
+  .legend-icon { font-size: 18px; }
+
+  /* CALENDAR */
+  .calendar-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+  }
+
+  .month-section {
+    margin-bottom: 36px;
+  }
+
+  .month-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 26px;
+    font-weight: 800;
+    padding: 10px 20px;
+    border-radius: 16px;
+    margin-bottom: 14px;
+    display: inline-block;
+  }
+
+  .month-april .month-title { background: linear-gradient(135deg, #FFD93D33, #FF6B6B22); color: #FF6B6B; }
+  .month-may .month-title { background: linear-gradient(135deg, #6BCB7733, #4D96FF22); color: #3a8e50; }
+  .month-june .month-title { background: linear-gradient(135deg, #4D96FF33, #C77DFF22); color: #4D96FF; }
+
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .day-header {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    padding: 4px 0;
+  }
+
+  .day-card {
+    background: white;
+    border-radius: 16px;
+    padding: 10px 7px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    border: 2px solid transparent;
+    transition: all 0.25s ease;
+    min-height: 90px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .day-card.empty {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+
+  .day-card.today {
+    border-color: var(--sun);
+    box-shadow: 0 4px 16px rgba(255,217,61,0.3);
+  }
+
+  .day-card.completed-day {
+    background: linear-gradient(135deg, #f0fff4, #e8f5e9);
+    border-color: var(--mint);
+  }
+
+  .day-num {
+    font-family: 'Baloo 2', cursive;
+    font-size: 18px;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+
+  .day-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .task-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 8px;
+    width: 100%;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #666;
+    transition: all 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .task-btn:hover { transform: scale(1.05); filter: brightness(0.95); }
+
+  .task-btn.done {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+
+  .task-btn.done .task-icon { filter: grayscale(0.5); }
+
+  .task-reading { background: #FFF3CD; }
+  .task-planetspark { background: #E8F5E9; }
+  .task-chess { background: #E3F2FD; }
+  .task-dance { background: #F3E5F5; }
+
+  .task-reading.done { background: #f5f5f5; }
+  .task-planetspark.done { background: #f5f5f5; }
+  .task-chess.done { background: #f5f5f5; }
+  .task-dance.done { background: #f5f5f5; }
+
+  .task-icon { font-size: 13px; flex-shrink: 0; }
+
+  /* Checkmark overlay on complete day */
+  .day-card.completed-day::after {
+    content: '✅';
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 14px;
+    opacity: 0.6;
+  }
+
+  /* Points popup */
+  .points-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: white;
+    border-radius: 30px;
+    padding: 30px 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+  }
+
+  .points-popup.show {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .points-popup .emoji { font-size: 50px; }
+  .points-popup .msg {
+    font-family: 'Baloo 2', cursive;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--coral);
+  }
+
+  .confetti-piece {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 999;
+    animation: confettiFall 1.5s ease-in forwards;
+  }
+
+  @keyframes confettiFall {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  .progress-bar-wrap {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 800;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .progress-bar {
+    height: 14px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FFD93D, #FF6B6B, #6BCB77, #4D96FF, #C77DFF);
+    background-size: 200% auto;
+    border-radius: 10px;
+    transition: width 0.6s ease;
+    animation: shimmer 2s linear infinite;
+  }
+
+  .reset-btn {
+    display: block;
+    margin: 10px auto 0;
+    background: none;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #bbb;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .reset-btn:hover { border-color: var(--coral); color: var(--coral); }
+
+  @media (max-width: 600px) {
+    .week-grid { gap: 4px; }
+    .day-card { min-height: 80px; padding: 7px 4px; }
+    .day-num { font-size: 15px; }
+    .task-btn { font-size: 10px; padding: 1px 3px; }
+    .task-icon { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title">🌞 My Summer Adventure Calendar</div>
+  <div class="subtitle">April 24 – June 10 • Check off tasks & earn points!</div>
+</header>
+
+<div class="scoreboard">
+  <div class="score-box">
+    <div class="score-label">⭐ Total Points</div>
+    <div class="score-value" id="totalPoints">0</div>
+    <div class="score-unit">pts</div>
+  </div>
+  <div class="score-box">
+    <div class="score-label">🔥 Tasks Done</div>
+    <div class="score-value" id="tasksDone">0</div>
+    <div class="score-unit">tasks</div>
+  </div>
+  <div class="score-box level-box">
+    <div class="score-label">🏆 Level</div>
+    <div class="score-value" id="levelName">Beginner</div>
+    <div class="score-unit" id="levelNext">0 pts to next</div>
+  </div>
+</div>
+
+<div class="progress-bar-wrap">
+  <div class="progress-label">
+    <span>Progress</span>
+    <span id="progressPct">0%</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><span class="legend-icon">📚</span> Reading (10min) — 5pts</div>
+  <div class="legend-item"><span class="legend-icon">🚀</span> Planet Spark — 10pts</div>
+  <div class="legend-item"><span class="legend-icon">♟️</span> Chess (Wed & Fri) — 10pts</div>
+  <div class="legend-item"><span class="legend-icon">💃</span> Dance (Sat & Sun) — 10pts</div>
+</div>
+
+<div class="calendar-container" id="calendarContainer"></div>
+
+<div style="text-align:center; padding-bottom: 30px;">
+  <button class="reset-btn" onclick="if(confirm('Reset all progress? 😢')) { localStorage.clear(); location.reload(); }">🔄 Reset All Progress</button>
+</div>
+
+<div class="points-popup" id="popup">
+  <div class="emoji" id="popupEmoji">⭐</div>
+  <div class="msg" id="popupMsg">+5 Points!</div>
+</div>
+
+<script>
+const TASKS = {
+  reading:     { label: 'Reading',     icon: '📚', points: 5,  cls: 'task-reading',     days: 'all'          },
+  planetspark: { label: 'Planet Spark',icon: '🚀', points: 10, cls: 'task-planetspark',  days: 'all'          },
+  chess:       { label: 'Chess',       icon: '♟️', points: 10, cls: 'task-chess',        days: [3, 5]         }, // Wed=3, Fri=5
+  dance:       { label: 'Dance',       icon: '💃', points: 10, cls: 'task-dance',        days: [6, 0]         }, // Sat=6, Sun=0
+};
+
+const START = new Date(2025, 3, 24); // April 24, 2025
+const END   = new Date(2025, 5, 10); // June 10, 2025
+
+const LEVELS = [
+  { name: '🌱 Beginner',   min: 0   },
+  { name: '⭐ Rising Star', min: 100 },
+  { name: '🌟 Champion',   min: 300 },
+  { name: '🏆 Legend',     min: 600 },
+  { name: '🚀 Superstar',  min: 1000},
+  { name: '👑 Grand Master', min: 1500 },
+];
+
+let state = {};
+
+function storageKey(dateStr, task) { return `cal_${dateStr}_${task}`; }
+
+function loadState() {
+  state = {};
+  const all = getDates();
+  all.forEach(d => {
+    const ds = dateStr(d);
+    state[ds] = {};
+    getTasksForDay(d).forEach(t => {
+      state[ds][t] = localStorage.getItem(storageKey(ds, t)) === '1';
+    });
+  });
+}
+
+function dateStr(d) {
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function getDates() {
+  const dates = [];
+  let cur = new Date(START);
+  while (cur <= END) {
+    dates.push(new Date(cur));
+    cur.setDate(cur.getDate() + 1);
+  }
+  return dates;
+}
+
+function getTasksForDay(d) {
+  const dow = d.getDay();
+  return Object.keys(TASKS).filter(t => {
+    const td = TASKS[t].days;
+    if (td === 'all') return true;
+    return td.includes(dow);
+  });
+}
+
+function toggleTask(ds, task) {
+  const newVal = !state[ds][task];
+  state[ds][task] = newVal;
+  localStorage.setItem(storageKey(ds, task), newVal ? '1' : '0');
+
+  if (newVal) {
+    showPopup(TASKS[task].icon, `+${TASKS[task].points} pts!`);
+    launchConfetti();
+  }
+
+  updateScores();
+  rerenderDay(ds);
+}
+
+function getTotalPoints() {
+  let pts = 0;
+  Object.entries(state).forEach(([ds, tasks]) => {
+    Object.entries(tasks).forEach(([t, done]) => {
+      if (done) pts += TASKS[t].points;
+    });
+  });
+  return pts;
+}
+
+function getTotalTasksDone() {
+  let n = 0;
+  Object.values(state).forEach(tasks => {
+    Object.values(tasks).forEach(done => { if (done) n++; });
+  });
+  return n;
+}
+
+function getTotalPossibleTasks() {
+  return getDates().reduce((acc, d) => acc + getTasksForDay(d).length, 0);
+}
+
+function getLevel(pts) {
+  let level = LEVELS[0];
+  for (let l of LEVELS) {
+    if (pts >= l.min) level = l;
+  }
+  return level;
+}
+
+function updateScores() {
+  const pts = getTotalPoints();
+  const done = getTotalTasksDone();
+  const total = getTotalPossibleTasks();
+  const pct = Math.round((done / total) * 100);
+
+  document.getElementById('totalPoints').textContent = pts;
+  document.getElementById('tasksDone').textContent = done;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+
+  const lvl = getLevel(pts);
+  const lvlIdx = LEVELS.indexOf(lvl);
+  document.getElementById('levelName').textContent = lvl.name;
+  if (lvlIdx < LEVELS.length - 1) {
+    const next = LEVELS[lvlIdx + 1];
+    document.getElementById('levelNext').textContent = `${next.min - pts} pts to next`;
+  } else {
+    document.getElementById('levelNext').textContent = 'Max level! 🎉';
+  }
+}
+
+function rerenderDay(ds) {
+  const el = document.querySelector(`[data-date="${ds}"]`);
+  if (!el) return;
+  renderDayCard(el, new Date(ds.replace(/-/g, '/')));
+}
+
+function renderDayCard(el, d) {
+  const ds = dateStr(d);
+  const tasks = getTasksForDay(d);
+  const allDone = tasks.length > 0 && tasks.every(t => state[ds][t]);
+  
+  el.className = `day-card${allDone ? ' completed-day' : ''}`;
+  
+  const today = new Date();
+  const todayStr = dateStr(today);
+  if (ds === todayStr) el.classList.add('today');
+
+  el.innerHTML = `<div class="day-num">${d.getDate()}</div><div class="day-tasks">${
+    tasks.map(t => `
+      <button class="task-btn ${TASKS[t].cls} ${state[ds][t] ? 'done' : ''}"
+        onclick="toggleTask('${ds}','${t}')">
+        <span class="task-icon">${state[ds][t] ? '✅' : TASKS[t].icon}</span>
+        <span>${TASKS[t].label}</span>
+      </button>
+    `).join('')
+  }</div>`;
+}
+
+function showPopup(emoji, msg) {
+  const popup = document.getElementById('popup');
+  document.getElementById('popupEmoji').textContent = emoji;
+  document.getElementById('popupMsg').textContent = msg;
+  popup.classList.add('show');
+  setTimeout(() => popup.classList.remove('show'), 1200);
+}
+
+function launchConfetti() {
+  const colors = ['#FFD93D','#FF6B6B','#6BCB77','#4D96FF','#C77DFF','#FFB347'];
+  for (let i = 0; i < 18; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.top = '-20px';
+    el.style.background = colors[Math.floor(Math.random() * colors.length)];
+    el.style.animationDelay = Math.random() * 0.5 + 's';
+    el.style.transform = `rotate(${Math.random()*360}deg)`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 2000);
+  }
+}
+
+function buildCalendar() {
+  const container = document.getElementById('calendarContainer');
+  const dates = getDates();
+
+  const months = {};
+  dates.forEach(d => {
+    const key = `${d.getFullYear()}-${d.getMonth()}`;
+    if (!months[key]) months[key] = { year: d.getFullYear(), month: d.getMonth(), days: [] };
+    months[key].days.push(d);
+  });
+
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const monthClasses = { 3: 'month-april', 4: 'month-may', 5: 'month-june' };
+  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  Object.values(months).forEach(({ year, month, days }) => {
+    const section = document.createElement('div');
+    section.className = `month-section ${monthClasses[month] || ''}`;
+
+    const title = document.createElement('div');
+    title.className = 'month-title';
+    title.textContent = `${monthNames[month]} ${year}`;
+    section.appendChild(title);
+
+    // Day headers
+    const headerGrid = document.createElement('div');
+    headerGrid.className = 'week-grid';
+    dayNames.forEach(n => {
+      const h = document.createElement('div');
+      h.className = 'day-header';
+      h.textContent = n;
+      headerGrid.appendChild(h);
+    });
+    section.appendChild(headerGrid);
+
+    // Build weeks
+    const firstDay = days[0].getDay();
+    const allCells = [];
+    for (let i = 0; i < firstDay; i++) allCells.push(null);
+    days.forEach(d => allCells.push(d));
+    while (allCells.length % 7 !== 0) allCells.push(null);
+
+    for (let w = 0; w < allCells.length / 7; w++) {
+      const weekGrid = document.createElement('div');
+      weekGrid.className = 'week-grid';
+      for (let d = 0; d < 7; d++) {
+        const day = allCells[w * 7 + d];
+        const cell = document.createElement('div');
+        if (!day) {
+          cell.className = 'day-card empty';
+        } else {
+          const ds = dateStr(day);
+          cell.setAttribute('data-date', ds);
+          renderDayCard(cell, day);
+        }
+        weekGrid.appendChild(cell);
+      }
+      section.appendChild(weekGrid);
+    }
+
+    container.appendChild(section);
+  });
+}
+
+loadState();
+buildCalendar();
+updateScores();
+</script>
+</body>
+</html>
