@@ -16,9 +16,9 @@
     --bg:         #FDF4FF;
     --text:       #3B1D5E;
   }
- 
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
   body {
     font-family: 'Nunito', sans-serif;
     background: var(--bg);
@@ -30,7 +30,7 @@
     min-height: 100vh;
     color: var(--text);
   }
- 
+
   .sparkle {
     position: fixed; pointer-events: none; font-size: 18px;
     animation: floatUp 6s ease-in-out infinite; opacity: 0.35; z-index: 0;
@@ -40,9 +40,9 @@
     50%  { transform: translateY(-30px) rotate(180deg); opacity: 0.6;  }
     100% { transform: translateY(0)    rotate(360deg); opacity: 0.35; }
   }
- 
+
   header { text-align: center; padding: 36px 20px 10px; position: relative; }
- 
+
   .unicorn-banner {
     font-size: clamp(40px, 10vw, 80px); line-height: 1;
     filter: drop-shadow(0 4px 12px rgba(168,85,247,0.3));
@@ -52,7 +52,19 @@
     0%,100% { transform: translateY(0); }
     50%     { transform: translateY(-8px); }
   }
- 
+
+  .kid-name {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(32px, 7vw, 62px);
+    font-weight: 800;
+    color: #FF6FD8;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 30px rgba(255,111,216,0.4), 3px 3px 0px #E9D5FF;
+    line-height: 1.1;
+    margin-top: 4px;
+  }
+
   .title {
     font-family: 'Baloo 2', cursive;
     font-size: clamp(24px, 5.5vw, 48px); font-weight: 800;
@@ -65,16 +77,16 @@
     0%   { background-position: 0%   center; }
     100% { background-position: 250% center; }
   }
- 
+
   .subtitle { font-size: 14px; color: #A855F7; margin-top: 4px; font-weight: 700; letter-spacing: 0.5px; }
- 
+
   /* SCOREBOARD */
   .scoreboard {
     display: flex; justify-content: center; align-items: center;
     gap: 14px; flex-wrap: wrap; padding: 16px 20px 8px;
     max-width: 720px; margin: 0 auto;
   }
- 
+
   .score-box {
     background: white; border-radius: 22px; padding: 12px 24px;
     box-shadow: 0 4px 20px rgba(168,85,247,0.12); text-align: center;
@@ -87,14 +99,14 @@
   .score-box.pts-box  { border-color: #FF6FD8; }
   .score-box.done-box { border-color: #A855F7; }
   .score-box.lvl-box  { border-color: #60A5FA; }
- 
+
   .score-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #C084FC; }
   .score-value { font-family: 'Baloo 2', cursive; font-size: 36px; font-weight: 800; line-height: 1; }
   .pts-box  .score-value { color: #FF6FD8; }
   .done-box .score-value { color: #A855F7; }
   .lvl-box  .score-value { color: #60A5FA; font-size: 20px; }
   .score-unit { font-size: 11px; font-weight: 700; color: #D8B4FE; }
- 
+
   /* PROGRESS */
   .progress-bar-wrap { max-width: 600px; margin: 4px auto 16px; padding: 0 20px; }
   .progress-label {
@@ -109,7 +121,7 @@
     background-size: 250% auto; border-radius: 10px;
     transition: width 0.6s ease; animation: shimmer 3s linear infinite;
   }
- 
+
   /* LEGEND */
   .legend {
     display: flex; justify-content: center; flex-wrap: wrap;
@@ -122,11 +134,11 @@
     border: 1.5px solid #E9D5FF;
   }
   .legend-icon { font-size: 16px; }
- 
+
   /* CALENDAR */
   .calendar-container { max-width: 1100px; margin: 0 auto; padding: 0 14px 40px; }
   .month-section { margin-bottom: 32px; }
- 
+
   .month-title {
     font-family: 'Baloo 2', cursive; font-size: 24px; font-weight: 800;
     padding: 8px 20px; border-radius: 16px; margin-bottom: 12px;
@@ -135,14 +147,14 @@
   .month-april .month-title { background: linear-gradient(135deg,#FF6FD822,#FB718522); color:#BE185D; }
   .month-may   .month-title { background: linear-gradient(135deg,#A855F722,#60A5FA22); color:#7C3AED; }
   .month-june  .month-title { background: linear-gradient(135deg,#60A5FA22,#34D39922); color:#1D4ED8; }
- 
+
   .week-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 7px; margin-bottom: 8px; }
- 
+
   .day-header {
     text-align: center; font-size: 10px; font-weight: 800;
     text-transform: uppercase; letter-spacing: 0.5px; color: #C084FC; padding: 4px 0;
   }
- 
+
   .day-card {
     background: white; border-radius: 16px; padding: 8px 6px;
     box-shadow: 0 2px 10px rgba(168,85,247,0.07); border: 2px solid #F3E8FF;
@@ -158,10 +170,10 @@
   .day-card.completed-day::after {
     content: '🦄'; position: absolute; top: 3px; right: 4px; font-size: 13px; opacity: 0.8;
   }
- 
+
   .day-num { font-family: 'Baloo 2', cursive; font-size: 17px; font-weight: 700; color: #7C3AED; margin-bottom: 3px; line-height: 1; }
   .day-tasks { display: flex; flex-direction: column; gap: 3px; }
- 
+
   .task-btn {
     display: flex; align-items: center; gap: 4px; border: none;
     padding: 2px 4px; border-radius: 8px; width: 100%; text-align: left;
@@ -171,7 +183,7 @@
   }
   .task-btn:not(.done):hover { transform: scale(1.04); filter: brightness(0.94); }
   .task-btn.done { opacity: 0.55; text-decoration: line-through; cursor: default; pointer-events: none; }
- 
+
   .task-reading     { background: #FFF0FB; }
   .task-planetspark { background: #F0FFF4; }
   .task-chess       { background: #EFF6FF; }
@@ -180,9 +192,9 @@
   .task-planetspark.done { background: #F5F0FF; }
   .task-chess.done       { background: #F5F0FF; }
   .task-dance.done       { background: #F5F0FF; }
- 
+
   .task-icon { font-size: 12px; flex-shrink: 0; }
- 
+
   /* Mark day done button */
   .mark-day-btn {
     margin-top: 5px; width: 100%; background: none; border: 1.5px dashed #D8B4FE;
@@ -192,7 +204,7 @@
   }
   .mark-day-btn:hover { border-color: var(--uni-purple); color: var(--uni-purple); background: #FAF5FF; }
   .day-card.completed-day .mark-day-btn { border: 1.5px solid var(--uni-purple); color: var(--uni-purple); background: #F3E8FF; }
- 
+
   /* REWARD BLOCK */
   .reward-block {
     background: white; border-radius: 20px; margin: 4px 0 20px;
@@ -200,7 +212,7 @@
     box-shadow: 0 4px 20px rgba(168,85,247,0.12); transition: all 0.3s ease;
   }
   .reward-block.paid { border-color: var(--uni-mint); box-shadow: 0 4px 20px rgba(52,211,153,0.2); }
- 
+
   .reward-header {
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 8px; padding: 12px 16px 10px;
@@ -208,29 +220,29 @@
     border-bottom: 2px dashed #E9D5FF;
   }
   .reward-block.paid .reward-header { background: linear-gradient(135deg,#F0FFF9,#ECFDF5); border-bottom-color: #A7F3D0; }
- 
+
   .reward-title { font-family: 'Baloo 2', cursive; font-size: 15px; font-weight: 800; color: #7C3AED; display: flex; align-items: center; gap: 6px; }
   .reward-block.paid .reward-title { color: #059669; }
   .reward-dates { font-size: 11px; font-weight: 700; color: #C084FC; }
- 
+
   .reward-body { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 12px 16px; }
   .reward-pts-box { text-align: center; min-width: 72px; }
   .reward-pts-earned { font-family: 'Baloo 2', cursive; font-size: 34px; font-weight: 800; color: #A855F7; line-height: 1; }
   .reward-block.paid .reward-pts-earned { color: var(--uni-mint); }
   .reward-pts-max { font-size: 10px; font-weight: 700; color: #C084FC; }
- 
+
   .reward-tiers { display: flex; gap: 7px; flex-wrap: wrap; flex: 1; }
   .reward-tier { flex: 1; min-width: 75px; border-radius: 12px; padding: 7px 8px; text-align: center; background: #F9F0FF; border: 2px solid transparent; transition: all 0.2s; }
   .reward-tier.active { background: linear-gradient(135deg,#FAF5FF,#F3E8FF); border-color: #A855F7; transform: scale(1.05); }
   .reward-tier.active .tier-rupee { color: #7C3AED; }
   .reward-block.paid .reward-tier.active { background: linear-gradient(135deg,#ECFDF5,#D1FAE5); border-color: var(--uni-mint); }
- 
+
   .tier-range { font-size: 9px; font-weight: 700; color: #C084FC; }
   .tier-rupee { font-family: 'Baloo 2', cursive; font-size: 18px; font-weight: 800; color: #D8B4FE; line-height: 1.2; }
   .tier-label { font-size: 9px; font-weight: 700; color: #C084FC; text-transform: uppercase; }
- 
+
   .reward-action { display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 90px; }
- 
+
   .pay-btn {
     background: linear-gradient(135deg, #A855F7, #7C3AED); border: none; border-radius: 30px;
     padding: 9px 18px; font-family: 'Baloo 2', cursive; font-size: 14px; font-weight: 700;
@@ -239,11 +251,11 @@
   }
   .pay-btn:hover { transform: scale(1.05); box-shadow: 0 6px 16px rgba(168,85,247,0.5); }
   .reward-block.paid .pay-btn { background: linear-gradient(135deg,#34D399,#059669); box-shadow: 0 4px 12px rgba(52,211,153,0.35); }
- 
+
   .pay-status { font-size: 10px; font-weight: 700; color: #C084FC; }
   .reward-block.paid .pay-status { color: var(--uni-mint); }
   .reward-incomplete { font-size: 11px; font-weight: 700; color: #C084FC; font-style: italic; }
- 
+
   /* POPUP */
   .points-popup {
     position: fixed; top: 50%; left: 50%;
@@ -256,7 +268,7 @@
   .points-popup.show { transform: translate(-50%,-50%) scale(1); }
   .points-popup .emoji { font-size: 48px; }
   .points-popup .msg { font-family: 'Baloo 2', cursive; font-size: 26px; font-weight: 800; color: #A855F7; }
- 
+
   /* CONFETTI */
   .confetti-piece {
     position: fixed; width: 10px; height: 10px; border-radius: 2px;
@@ -267,7 +279,7 @@
     0%   { transform: translateY(-100px) rotate(0deg);   opacity: 1; }
     100% { transform: translateY(100vh)  rotate(720deg); opacity: 0; }
   }
- 
+
   /* RESET BTN */
   .reset-btn {
     display: block; margin: 10px auto 0; background: none;
@@ -276,7 +288,7 @@
     color: #C084FC; cursor: pointer; transition: all 0.2s;
   }
   .reset-btn:hover { border-color: var(--uni-pink); color: var(--uni-pink); }
- 
+
   /* PASSWORD MODAL */
   .modal-overlay {
     display: none; position: fixed; inset: 0;
@@ -317,8 +329,78 @@
     color:white; cursor:pointer; box-shadow:0 4px 12px rgba(168,85,247,0.35);
   }
   .modal-confirm:hover { filter:brightness(1.08); }
- 
-  @media (max-width:600px) {
+
+  /* ── SECRET PARENT PANEL ── */
+  .secret-panel-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(59,29,94,0.6); z-index: 3000;
+    justify-content: center; align-items: flex-start;
+    padding-top: 40px; overflow-y: auto;
+  }
+  .secret-panel-overlay.show { display: flex; }
+
+  .secret-panel {
+    background: white; border-radius: 28px; padding: 28px 24px;
+    width: min(95vw, 480px); box-shadow: 0 24px 64px rgba(168,85,247,0.35);
+    border: 3px solid #E9D5FF; animation: popIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    margin-bottom: 40px;
+  }
+
+  .secret-panel h2 {
+    font-family: 'Baloo 2', cursive; font-size: 22px; font-weight: 800;
+    color: #A855F7; text-align: center; margin-bottom: 4px;
+  }
+  .secret-panel .panel-sub { text-align:center; font-size:12px; color:#C084FC; font-weight:700; margin-bottom:18px; }
+
+  .panel-section {
+    background: #FAF5FF; border-radius: 16px; padding: 14px 16px; margin-bottom: 14px;
+    border: 1.5px solid #E9D5FF;
+  }
+  .panel-section h3 { font-size:13px; font-weight:800; color:#7C3AED; margin-bottom:10px; text-transform:uppercase; letter-spacing:0.5px; }
+
+  .panel-day-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 6px 0; border-bottom: 1px dashed #E9D5FF; gap: 8px;
+  }
+  .panel-day-row:last-child { border-bottom: none; }
+  .panel-day-label { font-size:13px; font-weight:700; color:#6B21A8; flex:1; }
+
+  .panel-toggle {
+    background: none; border: 2px solid #E9D5FF; border-radius: 20px;
+    padding: 4px 12px; font-family:'Nunito',sans-serif; font-size:11px;
+    font-weight:800; cursor:pointer; transition:all 0.2s; white-space:nowrap;
+  }
+  .panel-toggle.on  { background:#A855F7; border-color:#A855F7; color:white; }
+  .panel-toggle.off { color:#C084FC; }
+  .panel-toggle:hover { transform:scale(1.05); }
+
+  .panel-reward-row {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:6px 0; border-bottom:1px dashed #E9D5FF; gap:8px; flex-wrap:wrap;
+  }
+  .panel-reward-row:last-child { border-bottom:none; }
+  .panel-reward-label { font-size:13px; font-weight:700; color:#6B21A8; flex:1; }
+  .panel-reward-pts   { font-size:12px; font-weight:700; color:#A855F7; }
+
+  .panel-btn-row { display:flex; gap:8px; margin-top:4px; }
+  .panel-btn {
+    flex:1; padding:8px; border-radius:12px; border:none;
+    font-family:'Nunito',sans-serif; font-size:12px; font-weight:800;
+    cursor:pointer; transition:all 0.2s;
+  }
+  .panel-btn.pay   { background:linear-gradient(135deg,#A855F7,#7C3AED); color:white; }
+  .panel-btn.unpay { background:linear-gradient(135deg,#34D399,#059669); color:white; }
+  .panel-btn.reset-all { background:linear-gradient(135deg,#FB7185,#E11D48); color:white; }
+  .panel-btn:hover { filter:brightness(1.1); transform:scale(1.03); }
+
+  .panel-close {
+    display:block; width:100%; padding:12px; border-radius:16px;
+    border:2px solid #E9D5FF; background:none; font-family:'Nunito',sans-serif;
+    font-size:14px; font-weight:800; color:#C084FC; cursor:pointer; margin-top:6px;
+  }
+  .panel-close:hover { border-color:#A855F7; color:#A855F7; }
+
+  .secret-hint { /* invisible tap counter on unicorn */ cursor:default; }
     .week-grid { gap:4px; }
     .day-card  { min-height:80px; padding:6px 4px; }
     .day-num   { font-size:14px; }
@@ -328,20 +410,21 @@
 </style>
 </head>
 <body>
- 
+
 <div class="sparkle" style="left:5%;top:20%;animation-delay:0s">✨</div>
 <div class="sparkle" style="left:92%;top:15%;animation-delay:1s">🌸</div>
 <div class="sparkle" style="left:15%;top:70%;animation-delay:2s">⭐</div>
 <div class="sparkle" style="left:85%;top:60%;animation-delay:0.5s">💫</div>
 <div class="sparkle" style="left:50%;top:5%;animation-delay:1.5s">🌟</div>
 <div class="sparkle" style="left:70%;top:85%;animation-delay:2.5s">✨</div>
- 
+
 <header>
-  <div class="unicorn-banner">🦄</div>
-  <div class="title">My Magical Summer Calendar</div>
+  <div class="unicorn-banner secret-hint" id="secretTrigger" onclick="handleSecretTap()">🦄</div>
+  <div class="kid-name">Aadya's</div>
+  <div class="title">Magical Summer Calendar</div>
   <div class="subtitle">✨ April 24 – June 10 · Check off tasks &amp; earn rewards! ✨</div>
 </header>
- 
+
 <div class="scoreboard">
   <div class="score-box pts-box">
     <div class="score-label">⭐ Total Points</div>
@@ -359,7 +442,7 @@
     <div class="score-unit" id="levelNext">0 pts to next</div>
   </div>
 </div>
- 
+
 <div class="progress-bar-wrap">
   <div class="progress-label">
     <span>✨ Magic Progress</span>
@@ -369,41 +452,68 @@
     <div class="progress-fill" id="progressFill" style="width:0%"></div>
   </div>
 </div>
- 
+
 <div class="legend">
   <div class="legend-item"><span class="legend-icon">📚</span> Reading (10min) — 5pts</div>
   <div class="legend-item"><span class="legend-icon">🚀</span> Planet Spark — 10pts</div>
   <div class="legend-item"><span class="legend-icon">♟️</span> Chess (Wed &amp; Fri) — 10pts</div>
   <div class="legend-item"><span class="legend-icon">💃</span> Dance (Sat &amp; Sun) — 10pts</div>
 </div>
- 
+
 <div class="calendar-container" id="calendarContainer"></div>
- 
+
 <div style="text-align:center;padding-bottom:36px;">
   <button class="reset-btn" onclick="openResetModal()">🔄 Reset All Progress</button>
 </div>
- 
+
 <div class="points-popup" id="popup">
   <div class="emoji" id="popupEmoji">⭐</div>
   <div class="msg" id="popupMsg">+5 Points!</div>
 </div>
- 
-<div class="modal-overlay" id="resetModal">
+
+<div class="modal-overlay" id="parentModal">
   <div class="modal-box">
     <div class="modal-icon">🔐</div>
-    <h3>Parent Password</h3>
-    <p>Enter the password to reset all progress</p>
-    <input class="modal-input" id="resetPassword" type="password"
+    <h3 id="parentModalTitle">Parent Password</h3>
+    <p id="parentModalDesc">Enter the password to continue</p>
+    <input class="modal-input" id="parentPassword" type="password"
       placeholder="••••" maxlength="20"
-      onkeydown="if(event.key==='Enter')confirmReset()"/>
-    <div class="modal-error" id="resetError"></div>
+      onkeydown="if(event.key==='Enter')confirmParentAction()"/>
+    <div class="modal-error" id="parentError"></div>
     <div class="modal-btns">
-      <button class="modal-cancel" onclick="closeResetModal()">Cancel</button>
-      <button class="modal-confirm" onclick="confirmReset()">Reset</button>
+      <button class="modal-cancel" onclick="closeParentModal()">Cancel</button>
+      <button class="modal-confirm" onclick="confirmParentAction()">Confirm</button>
     </div>
   </div>
 </div>
- 
+
+<!-- Secret Parent Panel -->
+<div class="secret-panel-overlay" id="secretPanel">
+  <div class="secret-panel">
+    <h2>🔐 Parent Panel</h2>
+    <div class="panel-sub">Secret controls — only for Mama &amp; Papa!</div>
+
+    <div class="panel-section">
+      <h3>📅 Override Day Completion</h3>
+      <div id="panelDayList"><!-- filled by JS --></div>
+    </div>
+
+    <div class="panel-section">
+      <h3>💰 Reward Blocks</h3>
+      <div id="panelRewardList"><!-- filled by JS --></div>
+    </div>
+
+    <div class="panel-section" style="background:#FFF0FB;">
+      <h3 style="color:#BE185D;">⚠️ Danger Zone</h3>
+      <div class="panel-btn-row">
+        <button class="panel-btn reset-all" onclick="panelResetAll()">🗑 Reset All Progress</button>
+      </div>
+    </div>
+
+    <button class="panel-close" onclick="closeSecretPanel()">✕ Close Panel</button>
+  </div>
+</div>
+
 <script>
 const TASKS = {
   reading:     {label:'Reading',      icon:'📚', points:5,  cls:'task-reading',     days:'all' },
@@ -411,10 +521,10 @@ const TASKS = {
   chess:       {label:'Chess',        icon:'♟️', points:10, cls:'task-chess',        days:[3,5] },
   dance:       {label:'Dance',        icon:'💃', points:10, cls:'task-dance',        days:[6,0] },
 };
- 
+
 const START = new Date(2025,3,24);
 const END   = new Date(2025,5,10);
- 
+
 const LEVELS = [
   {name:'🐴 Foal',          min:0   },
   {name:'🌸 Unicorn Pup',   min:100 },
@@ -423,13 +533,13 @@ const LEVELS = [
   {name:'🦄 True Unicorn',  min:1000},
   {name:'👑 Magical Queen', min:1500},
 ];
- 
+
 const RESET_PASSWORD = '1234'; // 👈 Change this to your own password!
- 
+
 let state = {};
- 
+
 function storageKey(ds,t){ return `cal_${ds}_${t}`; }
- 
+
 function loadState(){
   state={};
   getDates().forEach(d=>{
@@ -437,28 +547,28 @@ function loadState(){
     getTasksForDay(d).forEach(t=>{ state[ds][t]=localStorage.getItem(storageKey(ds,t))==='1'; });
   });
 }
- 
+
 function dateStr(d){
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
- 
+
 function getDates(){
   const dates=[]; let cur=new Date(START);
   while(cur<=END){dates.push(new Date(cur));cur.setDate(cur.getDate()+1);}
   return dates;
 }
- 
+
 function getTasksForDay(d){
   const dow=d.getDay();
   return Object.keys(TASKS).filter(t=>{ const td=TASKS[t].days; return td==='all'||td.includes(dow); });
 }
- 
+
 // ONE-WAY: can tick, cannot untick
 function toggleTask(ds,task){
   if(state[ds][task]) return; // already done — ignore
   state[ds][task]=true;
   localStorage.setItem(storageKey(ds,task),'1');
-  showPopup(TASKS[task].icon,`+${TASKS[task].points} pts!`);
+  showBubble(TASKS[task].icon,`+${TASKS[task].points} pts!`);
   launchConfetti();
   updateScores();
   rerenderDay(ds);
@@ -466,10 +576,14 @@ function toggleTask(ds,task){
   const ci=chunks.findIndex(c=>c.some(d=>dateStr(d)===ds));
   if(ci!==-1) rerenderRewardBlock(ci);
 }
- 
+
 function isDayMarkedDone(ds){ return localStorage.getItem(`day_done_${ds}`)==='1'; }
- 
+
 function toggleDayDone(ds){
+  // Block future days
+  const today=new Date(); today.setHours(0,0,0,0);
+  const thatDay=new Date(ds.replace(/-/g,'/')); thatDay.setHours(0,0,0,0);
+  if(thatDay>today){ showBubble('🚫','Not yet! 😄'); return; }
   const newVal=!isDayMarkedDone(ds);
   localStorage.setItem(`day_done_${ds}`,newVal?'1':'0');
   rerenderDay(ds);
@@ -477,7 +591,7 @@ function toggleDayDone(ds){
   const ci=chunks.findIndex(c=>c.some(d=>dateStr(d)===ds));
   if(ci!==-1) rerenderRewardBlock(ci);
 }
- 
+
 function getTotalPoints(){
   let pts=0;
   Object.entries(state).forEach(([ds,tasks])=>{ Object.entries(tasks).forEach(([t,done])=>{ if(done) pts+=TASKS[t].points; }); });
@@ -487,9 +601,9 @@ function getTotalTasksDone(){
   let n=0; Object.values(state).forEach(tasks=>Object.values(tasks).forEach(done=>{if(done)n++;})); return n;
 }
 function getTotalPossibleTasks(){ return getDates().reduce((acc,d)=>acc+getTasksForDay(d).length,0); }
- 
+
 function getLevel(pts){ let l=LEVELS[0]; for(const lv of LEVELS){if(pts>=lv.min)l=lv;} return l; }
- 
+
 function updateScores(){
   const pts=getTotalPoints(), done=getTotalTasksDone(), total=getTotalPossibleTasks();
   const pct=Math.round((done/total)*100);
@@ -502,12 +616,12 @@ function updateScores(){
   document.getElementById('levelNext').textContent=lvlIdx<LEVELS.length-1
     ?`${LEVELS[lvlIdx+1].min-pts} pts to next`:'Max level! 🎉';
 }
- 
+
 function rerenderDay(ds){
   const el=document.querySelector(`[data-date="${ds}"]`);
   if(el) renderDayCard(el,new Date(ds.replace(/-/g,'/')));
 }
- 
+
 function renderDayCard(el,d){
   const ds=dateStr(d), tasks=getTasksForDay(d);
   const allTasksDone=tasks.length>0&&tasks.every(t=>state[ds][t]);
@@ -528,15 +642,15 @@ function renderDayCard(el,d){
     </div>
     <button class="mark-day-btn" onclick="toggleDayDone('${ds}')">${btnLabel}</button>`;
 }
- 
-function showPopup(emoji,msg){
+
+function showBubble(emoji,msg){
   document.getElementById('popupEmoji').textContent=emoji;
   document.getElementById('popupMsg').textContent=msg;
   const p=document.getElementById('popup');
   p.classList.add('show');
-  setTimeout(()=>p.classList.remove('show'),1200);
+  setTimeout(()=>p.classList.remove('show'),1400);
 }
- 
+
 function launchConfetti(){
   const colors=['#FF6FD8','#A855F7','#60A5FA','#34D399','#FBBF24','#FB7185'];
   for(let i=0;i<22;i++){
@@ -551,13 +665,13 @@ function launchConfetti(){
     setTimeout(()=>el.remove(),2200);
   }
 }
- 
+
 function get5DayChunks(){
   const all=getDates(),chunks=[];
   for(let i=0;i<all.length;i+=5) chunks.push(all.slice(i,i+5));
   return chunks;
 }
- 
+
 function getChunkPoints(chunk){
   return chunk.reduce((sum,d)=>{
     const ds=dateStr(d);
@@ -579,17 +693,23 @@ function getRupees(earned,max){
   return 0;
 }
 function isPaid(idx){ return localStorage.getItem(`reward_paid_${idx}`)==='1'; }
- 
+
+// Pay button — kid accessible, no password needed
 function markPaid(idx){
   if(isPaid(idx)){
-    if(!confirm('Undo payment? Only if you made a mistake!')) return;
-    localStorage.setItem(`reward_paid_${idx}`,'0');
-  } else {
-    localStorage.setItem(`reward_paid_${idx}`,'1');
+    // Already paid — only parent panel can undo
+    showBubble('✅','Already paid!');
+    return;
   }
+  localStorage.setItem(`reward_paid_${idx}`,'1');
   rerenderRewardBlock(idx);
 }
- 
+
+function markPaidConfirmed(idx, unpay){
+  localStorage.setItem(`reward_paid_${idx}`, unpay ? '0' : '1');
+  rerenderRewardBlock(idx);
+}
+
 function rerenderRewardBlock(idx){
   const el=document.getElementById(`reward-block-${idx}`);
   if(!el) return;
@@ -597,7 +717,7 @@ function rerenderRewardBlock(idx){
   tmp.innerHTML=buildRewardBlockHTML(get5DayChunks()[idx],idx);
   el.replaceWith(tmp.firstElementChild);
 }
- 
+
 function buildRewardBlockHTML(chunk,idx){
   const earned=getChunkPoints(chunk),max=getChunkMaxPoints(chunk);
   const complete=isChunkComplete(chunk),rupees=getRupees(earned,max),paid=isPaid(idx);
@@ -636,7 +756,7 @@ function buildRewardBlockHTML(chunk,idx){
     </div>
   </div>`;
 }
- 
+
 function buildCalendar(){
   const container=document.getElementById('calendarContainer');
   const allDates=getDates(), chunks=get5DayChunks();
@@ -653,7 +773,7 @@ function buildCalendar(){
   const monthClasses={3:'month-april',4:'month-may',5:'month-june'};
   const dayNames=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const renderedRewards=new Set();
- 
+
   Object.values(months).forEach(({year,month,days})=>{
     const section=document.createElement('div');
     section.className=`month-section ${monthClasses[month]||''}`;
@@ -696,19 +816,129 @@ function buildCalendar(){
     container.appendChild(section);
   });
 }
- 
-function openResetModal(){
-  document.getElementById('resetPassword').value='';
-  document.getElementById('resetError').textContent='';
-  document.getElementById('resetModal').classList.add('show');
-  setTimeout(()=>document.getElementById('resetPassword').focus(),100);
+
+// ── SECRET PARENT PANEL ─────────────────────────────────────────
+let _secretTaps = 0, _secretTimer = null;
+
+function handleSecretTap(){
+  _secretTaps++;
+  clearTimeout(_secretTimer);
+  _secretTimer = setTimeout(()=>{ _secretTaps=0; }, 2000);
+  if(_secretTaps >= 5){
+    _secretTaps = 0;
+    openParentModal('panel');
+  }
 }
-function closeResetModal(){ document.getElementById('resetModal').classList.remove('show'); }
-function confirmReset(){
-  const input=document.getElementById('resetPassword');
-  const error=document.getElementById('resetError');
-  if(input.value===RESET_PASSWORD){ localStorage.clear(); location.reload(); }
-  else {
+
+function openSecretPanel(){
+  buildSecretPanel();
+  document.getElementById('secretPanel').classList.add('show');
+}
+
+function closeSecretPanel(){
+  document.getElementById('secretPanel').classList.remove('show');
+}
+
+function buildSecretPanel(){
+  // Day overrides — show last 7 days and next 3 for safety
+  const today = new Date(); today.setHours(0,0,0,0);
+  const allDates = getDates();
+  const relevant = allDates.filter(d=>{
+    const diff = (d - today) / 86400000;
+    return diff >= -14 && diff <= 0; // past 14 days up to today
+  });
+
+  const dayList = document.getElementById('panelDayList');
+  if(relevant.length === 0){
+    dayList.innerHTML = '<div style="font-size:12px;color:#C084FC;">No past days yet.</div>';
+  } else {
+    dayList.innerHTML = relevant.reverse().map(d => {
+      const ds = dateStr(d);
+      const done = isDayMarkedDone(ds);
+      const label = d.toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});
+      return `<div class="panel-day-row">
+        <span class="panel-day-label">${label}</span>
+        <button class="panel-toggle ${done?'on':'off'}" onclick="panelToggleDay('${ds}')">
+          ${done ? '🦄 Done' : '☐ Not done'}
+        </button>
+      </div>`;
+    }).join('');
+  }
+
+  // Reward blocks
+  const chunks = get5DayChunks();
+  const rewardList = document.getElementById('panelRewardList');
+  rewardList.innerHTML = chunks.map((chunk, idx) => {
+    const earned = getChunkPoints(chunk);
+    const max    = getChunkMaxPoints(chunk);
+    const rupees = getRupees(earned, max);
+    const paid   = isPaid(idx);
+    const d1 = chunk[0].toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+    const d2 = chunk[chunk.length-1].toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+    return `<div class="panel-reward-row">
+      <span class="panel-reward-label">Block #${idx+1} · ${d1}–${d2}</span>
+      <span class="panel-reward-pts">${earned}/${max} pts · ₹${rupees}</span>
+      <div class="panel-btn-row" style="margin-top:0;width:100%">
+        ${!paid
+          ? `<button class="panel-btn pay" onclick="panelSetPaid(${idx},true)">✅ Mark Paid</button>`
+          : `<button class="panel-btn unpay" onclick="panelSetPaid(${idx},false)">↩ Undo Payment</button>`
+        }
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function panelToggleDay(ds){
+  const newVal = !isDayMarkedDone(ds);
+  localStorage.setItem(`day_done_${ds}`, newVal?'1':'0');
+  rerenderDay(ds);
+  const chunks = get5DayChunks();
+  const ci = chunks.findIndex(c=>c.some(d=>dateStr(d)===ds));
+  if(ci!==-1) rerenderRewardBlock(ci);
+  buildSecretPanel(); // refresh panel
+}
+
+function panelSetPaid(idx, pay){
+  localStorage.setItem(`reward_paid_${idx}`, pay?'1':'0');
+  rerenderRewardBlock(idx);
+  buildSecretPanel();
+}
+
+function panelResetAll(){
+  if(confirm('Reset ALL of Aadya\'s progress? This cannot be undone!')){
+    localStorage.clear();
+    location.reload();
+  }
+}
+
+// ── PARENT MODAL (reset + secret panel unlock) ───────────────────
+let _parentAction = null; // 'reset' or 'pay'
+let _parentPayIdx = null;
+
+function openParentModal(action, payIdx){
+  _parentAction = action;
+  _parentPayIdx = payIdx ?? null;
+  document.getElementById('parentPassword').value='';
+  document.getElementById('parentError').textContent='';
+  const title = action==='pay' ? '💰 Parent Approval' : action==='panel' ? '🔐 Parent Panel' : '🔄 Reset Progress';
+  const desc  = action==='pay' ? 'Enter password to record payment' : action==='panel' ? 'Enter password to open parent controls' : 'Enter password to reset all progress';
+  document.getElementById('parentModalTitle').textContent=title;
+  document.getElementById('parentModalDesc').textContent=desc;
+  document.getElementById('parentModal').classList.add('show');
+  setTimeout(()=>document.getElementById('parentPassword').focus(),100);
+}
+
+function closeParentModal(){ document.getElementById('parentModal').classList.remove('show'); }
+
+function confirmParentAction(){
+  const input=document.getElementById('parentPassword');
+  const error=document.getElementById('parentError');
+  if(input.value===RESET_PASSWORD){
+    closeParentModal();
+    if(_parentAction==='reset'){ localStorage.clear(); location.reload(); }
+    else if(_parentAction==='pay'){ markPaidConfirmed(_parentPayIdx); }
+    else if(_parentAction==='panel'){ openSecretPanel(); }
+  } else {
     error.textContent='Wrong password! Try again 🚫';
     input.value='';
     input.classList.remove('shake');
@@ -718,8 +948,16 @@ function confirmReset(){
     input.focus();
   }
 }
-document.getElementById('resetModal').addEventListener('click',function(e){ if(e.target===this) closeResetModal(); });
- 
+
+function openResetModal(){ openParentModal('reset'); }
+// keep old name working
+function closeResetModal(){ closeParentModal(); }
+function confirmReset(){ confirmParentAction(); }
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('parentModal').addEventListener('click',function(e){ if(e.target===this) closeParentModal(); });
+});
+
 loadState();
 buildCalendar();
 updateScores();
